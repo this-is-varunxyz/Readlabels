@@ -29,7 +29,8 @@
         <div class="design-background"></div>
         <div class="design-overlay"></div>
 
-        <div class="designlogo">Natural</div>
+        <div class="designlogo Natural">Natural</div>
+        <div class="designlogo Chemical">Chemical</div>
         <div class="product">
           <div class="soda"></div>
           <div class="soda2"></div>
@@ -39,13 +40,24 @@
     <script>
       const product = document.querySelector(".product");
       const design = document.querySelector(".design-overlay");
+      const natural = document.querySelector(".Natural");
+      const chemical= document.querySelector(".Chemical");
+
 
       product.addEventListener("mouseenter", function () {
         design.style.opacity = 0;
+        chemical.style.opacity = 1;
+        natural.style.opacity = 0;
+        
+
       });
 
       product.addEventListener("mouseleave", function () {
         design.style.opacity = 1;
+      chemical.style.opacity = 0;
+      natural.style.opacity =1;
+
+
       });
     </script>
   </body>

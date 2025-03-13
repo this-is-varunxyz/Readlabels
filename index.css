@@ -1,248 +1,237 @@
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-  background-color: #f8f9fa;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-}
-
-nav {
-  width: 100%;
-  height: 5vw;
-  min-height: 80px;
-  display: flex;
-  background-color: white;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.logodiv {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  height: 100%;
-  width: 30%; /* Reduced to give more space for navigation */
-}
-
-.paradiv {
-  height: 100%;
-  width: 70%; /* Increased for better space management */
-  display: flex;
-  justify-content: flex-end; /* Align links to the right */
-  align-items: center;
-  padding-right: 40px;
-}
-
-.logo {
-  background-image: url(images/logo1.png);
-  height: 80%; /* Slightly reduced height for better appearance */
-  margin-left: 2vw;
-  width: 5vw;
-  aspect-ratio: 1;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: inline-block;
-}
-
-.nav-links {
-  display: flex;
-  justify-content: flex-end;
-  flex-wrap: nowrap; /* Prevent links from wrapping */
-  gap: clamp(10px, 3vw, 40px); /* Responsive gap that scales with viewport */
-  width: 100%;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #333;
-  font-size: clamp(14px, 1.5vw, 18px); /* Responsive font size */
-  font-weight: 500;
-  position: relative;
-  transition: color 0.3s;
-  white-space: nowrap; /* Prevent text from wrapping */
-}
-
-.nav-links a:hover {
-  color: #ffb800;
-}
-
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -5px;
-  left: 0;
-  background-color: #ffb800;
-  transition: width 0.3s;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-.design {
-  height: 80vh;
-  width: 100%;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.design-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: red; /* Base color */
-  z-index: -1;
-}
-
-.design-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(to right, yellow, red, orange);
-  z-index: -1;
-  transition: opacity 1s ease;
-  opacity: 1;
-}
-
-.product:hover .design-overlay,
-.soda:hover .design-overlay {
-  opacity: 0;
-}
-
-.designlogo {
-  font-size: 15vw;
-  position: absolute;
-  color: #ffb202;
-  font-weight: bolder;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.product {
-  height: 30vw;
-  width: 16vw;
-  overflow: hidden;
-  position: absolute;
-}
-
-.soda {
-  background-image: url(images/first.png), url(images/mockup.png);
-
-  background-size: auto 100%, auto 100%;
-  background-position: 0 center, center center; /* Anchor the mockup in center */
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  background-blend-mode: multiply;
-  mask-image: url(images/mockup.png);
-  mask-size: auto 100%;
-  mask-repeat: no-repeat;
-  mask-position: center; /* Keep mask fixed at center */
-  transition: all 1s ease; /* Smoother transition */
-  position: relative;
-  /* Add positioning context */
-}
-
-.product:hover {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background-color: #f8f9fa;
+    overflow-x: hidden;
+  }
+  
+  nav {
+    width: 100%;
+    height: 5vw;
+    min-height: 80px;
+    display: flex;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .logodiv {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 100%;
+    width: 30%;
+  }
+  
+  .paradiv {
+    height: 100%;
+    width: 70%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 40px;
+  }
+  
+  .logo {
+    background-image: url(images/logo1.png);
+    height: 80%;
+    margin-left: 2vw;
+    width: 5vw;
+    aspect-ratio: 1;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: inline-block;
+  }
+  
+  .nav-links {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    gap: clamp(10px, 3vw, 40px);
+    width: 100%;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: clamp(14px, 1.5vw, 18px);
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s;
+    white-space: nowrap;
+  }
+  
+  .nav-links a:hover {
+    color: #ffb800;
+  }
+  
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #ffb800;
+    transition: width 0.3s;
+  }
+  
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+  
+  .design {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .Chemical {
+    opacity: 0;
+    transition: all 1s ease;
+  }
+  
+  .Natural {
+    opacity: 1;
+    transition: all 1s ease;
+  }
+  
+  .design-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    z-index: -1;
+  }
+  
+  .design-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, orange, red);
+    z-index: -1;
+    transition: opacity 1s ease;
+    opacity: 1;
+  }
+  
+  .designlogo {
+    font-size: 15vw;
+    position: absolute;
+    color: #ffb202;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .product {
+    height: 30vw;
+    width: 16vw;
+    overflow: hidden;
+    position: absolute;
+  }
+  
   .soda {
+    background-image: url(images/first.png), url(images/mockup.png);
+    background-size: auto 100%, auto 100%;
+    background-position: 0 center, center center;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-blend-mode: multiply;
+    mask-image: url(images/mockup.png);
+    mask-size: auto 100%;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    transition: all 1s ease;
+    position: relative;
+  }
+  
+  .product:hover .soda {
     background-image: url(images/page2.png), url(images/mockup.png);
-    /* Only move the background image, not the mask */
     background-position: 500% center, center center;
     transition: all 1s ease;
   }
-}
-
-.soda2 {
-  background-image: url(images/page2.png), url(images/mockup.png);
-  z-index: 3;
-  background-size: auto 100%, auto 100%;
-  background-position: 0 center, center center; /* Anchor the mockup in center */
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  background-blend-mode: multiply;
-  mask-image: url(images/mockup.png);
-  mask-size: auto 100%;
-  mask-repeat: no-repeat;
-  mask-position: center; /* Keep mask fixed at center */
-  transition: all 1s ease; /* Smoother transition */
-  position: relative;
-}
-/* Wide desktop screens */
-@media (min-width: 1200px) {
-  .nav-links {
-    gap: 40px;
-  }
-
-  .nav-links a {
-    font-size: 18px;
-  }
-}
-
-/* Medium screens */
-@media (max-width: 1199px) and (min-width: 769px) {
-  .nav-links {
-    gap: 20px;
-  }
-
-  .paradiv {
-    padding-right: 20px;
-  }
-}
-
-/* Small screens / tablets */
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    height: auto;
-    padding: 15px 0;
-  }
-
-  .logodiv,
-  .paradiv {
+  
+  .soda2 {
+    background-image: url(images/page2.png), url(images/mockup.png);
+    z-index: 3;
+    background-size: auto 100%, auto 100%;
+    background-position: 0 center, center center;
+    height: 100%;
     width: 100%;
-    justify-content: center;
-    padding-right: 0;
+    overflow: hidden;
+    background-blend-mode: multiply;
+    mask-image: url(images/mockup.png);
+    mask-size: auto 100%;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    transition: all 1s ease;
+    position: relative;
   }
-
-  .paradiv {
-    margin-top: 15px;
+  
+  @media (min-width: 1200px) {
+    .nav-links {
+      gap: 40px;
+    }
+    .nav-links a {
+      font-size: 18px;
+    }
   }
-
-  .nav-links {
-    justify-content: center;
-    gap: 15px;
+  
+  @media (max-width: 1199px) and (min-width: 769px) {
+    .nav-links {
+      gap: 20px;
+    }
+    .paradiv {
+      padding-right: 20px;
+    }
   }
-
-  .nav-links a {
-    font-size: 16px;
+  
+  @media (max-width: 768px) {
+    nav {
+      flex-direction: column;
+      height: auto;
+      padding: 15px 0;
+    }
+    .logodiv, .paradiv {
+      width: 100%;
+      justify-content: center;
+      padding-right: 0;
+    }
+    .paradiv {
+      margin-top: 15px;
+    }
+    .nav-links {
+      justify-content: center;
+      gap: 15px;
+    }
+    .nav-links a {
+      font-size: 16px;
+    }
+    .logo {
+      margin-left: 0;
+    }
   }
-
-  .logo {
-    margin-left: 0;
+  
+  @media (max-width: 480px) {
+    .nav-links {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    nav {
+      padding: 10px 0 20px 0;
+    }
   }
-}
-
-/* Very small screens / mobile */
-@media (max-width: 480px) {
-  .nav-links {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  nav {
-    padding: 10px 0 20px 0;
-  }
-}
+  
