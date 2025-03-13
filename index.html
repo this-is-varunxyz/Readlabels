@@ -1,42 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Main</title>
-    <link rel="stylesheet" href="index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="index.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <nav>
-        <div class="logodiv">
-            <div class="logo"></div>
+      <div class="logodiv">
+        <div class="logo"></div>
+      </div>
+      <div class="paradiv">
+        <div class="nav-links">
+          <a href="#" class="howitworks">How it works?</a>
+          <a href="#" class="whytouse">Why to use?</a>
+          <a href="#" class="about">About us</a>
+          <a href="#" class="contact">Contact</a>
         </div>
-        <div class="paradiv">
-            <div class="nav-links">
-                <a href="#" class="howitworks">How it works?</a>
-                <a href="#" class="whytouse">Why to use?</a>
-                <a href="#" class="about">About us</a>
-                <a href="#" class="contact">Contact</a>
-            </div>
-        </div>
+      </div>
     </nav>
     <main>
-        <div class="design">
+      <div class="design">
+        <div class="design-background"></div>
+        <div class="design-overlay"></div>
 
-            <div class="designlogo">
-                Natural
-            </div>
-            <div class="product">
-                <div class="soda">
-                    
-                </div>
-                
-            </div>
+        <div class="designlogo">Natural</div>
+        <div class="product">
+          <div class="soda"></div>
+          <div class="soda2"></div>
         </div>
-
-
-
+      </div>
     </main>
-</body>
+    <script>
+      const product = document.querySelector(".product");
+      const design = document.querySelector(".design-overlay");
+
+      product.addEventListener("mouseenter", function () {
+        design.style.opacity = 0;
+      });
+
+      product.addEventListener("mouseleave", function () {
+        design.style.opacity = 1;
+      });
+    </script>
+  </body>
 </html>
