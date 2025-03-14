@@ -1,275 +1,360 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  body {
-    background-color: #f8f9fa;
-    overflow-x: hidden;
-  }
-  
-  nav {
-    width: 100%;
-    height: 5vw;
-    min-height: 80px;
-    display: flex;
-    background-color: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  }
-  
-  .logodiv {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    height: 100%;
-    width: 30%;
-  }
-  
-  .paradiv {
-    height: 100%;
-    width: 70%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding-right: 40px;
-  }
-  
-  .logo {
-    background-image: url(images/logo1.png);
-    height: 80%;
-    margin-left: 2vw;
-    width: 5vw;
-    aspect-ratio: 1;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: inline-block;
-  }
-  
-  .nav-links {
-    display: flex;
-    justify-content: flex-end;
-    flex-wrap: nowrap;
-    gap: clamp(10px, 3vw, 40px);
-    width: 100%;
-  }
-  
-  .nav-links a {
-    text-decoration: none;
-    color: #333;
-    font-size: clamp(14px, 1.5vw, 18px);
-    font-weight: 500;
-    position: relative;
-    transition: color 0.3s;
-    white-space: nowrap;
-  }
-  
-  .nav-links a:hover {
-    color: #ffb800;
-  }
-  
-  .nav-links a::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: #ffb800;
-    transition: width 0.3s;
-  }
-  
-  .nav-links a:hover::after {
-    width: 100%;
-  }
-  
-  .design {
-    height: 40vw;
-    width: 100%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .Chemical {
-    opacity: 0;
-    transition: all 1s ease;
-  }
-  
-  .Natural {
-    opacity: 1;
-    transition: all 1s ease;
-  }
-  .main-container{
-   width: 100%;
-   display: flex;
-   height: 50vw;
-   align-items: center;
-   justify-content: center;
-    
-  }
-  .main-box{
-    width: 30vw;
-
-    height: 40vw;
- background-color: white;
- box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 
-              0 1px 3px rgba(0, 0, 0, 0.06);
-    border-radius: 1vw;
-  }
-  .know{
-    margin-top: 1vw;
-    font-size: 2vw;
-    text-align: center;
-
-
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-.howtouse{
-    color: grey;
-    text-align: center;
-    margin-top: 1vw;
+
+body {
+  background-color: #f8f9fa;
+  overflow-x: hidden;
 }
-.designdiv
-{
-    height: .2vw;
-    width: 10vw;
-    background-image: linear-gradient(to left, orange,red);
-    text-align: center;
-    margin: auto;
+
+nav {
+  width: 100%;
+  height: 5vw;
+  min-height: 80px;
+  display: flex;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
-  .design-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: red;
-    z-index: -1;
-  }
-  
-  .design-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+
+.logodiv {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 100%;
+  width: 30%;
+}
+
+.paradiv {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 40px;
+}
+
+.logo {
+  background-image: url(images/logo1.png);
+  height: 80%;
+  margin-left: 2vw;
+  width: 5vw;
+  aspect-ratio: 1;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  gap: clamp(10px, 3vw, 40px);
+  width: 100%;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: clamp(14px, 1.5vw, 18px);
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s;
+  white-space: nowrap;
+}
+
+.nav-links a:hover {
+  color: #ffb800;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #ffb800;
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.design {
+  height: 40vw;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Chemical {
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+.Natural {
+  opacity: 1;
+  transition: all 1s ease;
+}
+.main-container {
+  width: 100%;
+  display: flex;
+  height: 60vw;
+  align-items: center;
+  justify-content: center;
+}
+.main-box {
+  width: 30vw;
+  margin-top: 5vw;
+
+  height: 45vw;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+  border-radius: 1vw;
+}
+button {
+    height: 3vw;
+    font-size: 1.5vw;
+    text-align: center;
+    width: 8vw;
+    margin-left: 11vw;
+    color: white;
     background-image: linear-gradient(to right, orange, red);
-    z-index: -1;
-    transition: opacity 1s ease;
-    opacity: 1;
-  }
-  
-  .designlogo {
-    font-size: 15vw;
-    position: absolute;
-    color: #ffb202;
-    font-weight: bolder;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  .product {
-    height: 30vw;
-    width: 16vw;
-    overflow: hidden;
-    position: absolute;
-  }
-  
-  .soda {
-    background-image: url(images/first.png), url(images/mockup.png);
-    background-size: auto 100%, auto 100%;
-    background-position: 0 center, center center;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    background-blend-mode: multiply;
-    mask-image: url(images/mockup.png);
-    mask-size: auto 100%;
-    mask-repeat: no-repeat;
-    mask-position: center;
-    transition: all 1s ease;
-    position: relative;
-  }
-  
-  .product:hover .soda {
-    background-image: url(images/page2.png), url(images/mockup.png);
-    background-position: 500% center, center center;
-    transition: all 1s ease;
-  }
-  
-  .soda2 {
-    background-image: url(images/page2.png), url(images/mockup.png);
-    z-index: 3;
-    background-size: auto 100%, auto 100%;
-    background-position: 0 center, center center;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    background-blend-mode: multiply;
-    mask-image: url(images/mockup.png);
-    mask-size: auto 100%;
-    mask-repeat: no-repeat;
-    mask-position: center;
-    transition: all 1s ease;
-    position: relative;
-  }
- 
+    border: none;
+    outline: none;
+    border-radius: 0.5vw;
+    margin-top: 1vw;
+    box-shadow: 0px 0px 0.5vw rgba(255, 69, 0, 0.4);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
 
-  
-  @media (min-width: 1200px) {
-    .nav-links {
-      gap: 40px;
-    }
-    .nav-links a {
-      font-size: 18px;
-    }
+/* Subtle glowing effect on hover */
+button:hover {
+    box-shadow: 0px 0px 1vw rgba(255, 69, 0, 0.6);
+    transform: scale(1.02);
+}
+
+.know {
+  margin-top: 1vw;
+  font-size: 2vw;
+  text-align: center;
+}
+.upload-div {
+  height: 30%;
+  margin: auto;
+  border-radius: 1vw;
+  margin-top: 2vw;
+  width: 90%;
+  background-color: rgba(255, 178, 2, 0.2); /* Orange with 20% opacity */
+
+  border: 0.2vw dashed #ffb202;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: space-evenly;
+  flex-direction: column;
+}
+.upload-icon {
+  font-size: 3vw;
+}
+.howtouse {
+  color: grey;
+  text-align: center;
+  margin-top: 1vw;
+  font-size: 1.1vw;
+}
+.designdiv {
+  height: 0.2vw;
+  width: 10vw;
+  background-image: linear-gradient(to left, orange, red);
+  text-align: center;
+  margin: auto;
+}
+.typeofproduct {
+  color: #555;
+  font-weight: 500;
+  font-size: 1.2vw;
+  margin-top: 2vw;
+  margin-left: 1vw;
+}
+
+/* Input field styling */
+
+.first {
+  width: 90%;
+  height: 1vw;
+  margin: auto;
+}
+#product-type {
+    width: 90%;
+    padding: 0.7vw;
+    font-size: 1vw;
+    border: 0.1vw solid #ddd; /* Light gray border */
+    border-radius: 0.5vw;
+    background-color: white;
+    outline: none;
+    margin-left: 1.2vw;
+    margin-top: 1vw;
+    transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+    /* Softer outer shadow */
+    box-shadow: 0 0.2vw 0.4vw rgba(0, 0, 0, 0.08), 
+                inset 0 0.1vw 0.2vw rgba(0, 0, 0, 0.03); /* Softer inner shadow */
+}
+
+/* Border and shadow effect when focused */
+#product-type:focus {
+    border: 0.1vw solid #ff9900; /* Orange highlight */
+    box-shadow: 0 0.3vw 0.6vw rgba(255, 153, 0, 0.2), 
+                inset 0 0.1vw 0.2vw rgba(0, 0, 0, 0.03); /* Slightly stronger outer shadow */
+}
+
+.design-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  z-index: -1;
+}
+.drop {
+  color: #555;
+  font-weight: 500;
+  font-size: 1vw;
+  margin-top: 1vw;
+}
+.browse {
+  margin-top: 0.5vw;
+  color: gray;
+  font-size: 1vw;
+}
+
+.design-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to right, orange, red);
+  z-index: -1;
+  transition: opacity 1s ease;
+  opacity: 1;
+}
+
+.designlogo {
+  font-size: 15vw;
+  position: absolute;
+  color: #ffb202;
+  font-weight: bolder;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.product {
+  height: 30vw;
+  width: 16vw;
+  overflow: hidden;
+  position: absolute;
+}
+
+.soda {
+  background-image: url(images/first.png), url(images/mockup.png);
+  background-size: auto 100%, auto 100%;
+  background-position: 0 center, center center;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-blend-mode: multiply;
+  mask-image: url(images/mockup.png);
+  mask-size: auto 100%;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  transition: all 1s ease;
+  position: relative;
+}
+
+.product:hover .soda {
+  background-image: url(images/page2.png), url(images/mockup.png);
+  background-position: 500% center, center center;
+  transition: all 1s ease;
+}
+
+.soda2 {
+  background-image: url(images/page2.png), url(images/mockup.png);
+  z-index: 3;
+  background-size: auto 100%, auto 100%;
+  background-position: 0 center, center center;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-blend-mode: multiply;
+  mask-image: url(images/mockup.png);
+  mask-size: auto 100%;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  transition: all 1s ease;
+  position: relative;
+}
+
+@media (min-width: 1200px) {
+  .nav-links {
+    gap: 40px;
   }
-  
-  @media (max-width: 1199px) and (min-width: 769px) {
-    .nav-links {
-      gap: 20px;
-    }
-    .paradiv {
-      padding-right: 20px;
-    }
+  .nav-links a {
+    font-size: 18px;
   }
-  
-  @media (max-width: 768px) {
-    nav {
-      flex-direction: column;
-      height: auto;
-      padding: 15px 0;
-    }
-    .logodiv, .paradiv {
-      width: 100%;
-      justify-content: center;
-      padding-right: 0;
-    }
-    .paradiv {
-      margin-top: 15px;
-    }
-    .nav-links {
-      justify-content: center;
-      gap: 15px;
-    }
-    .nav-links a {
-      font-size: 16px;
-    }
-    .logo {
-      margin-left: 0;
-    }
+}
+
+@media (max-width: 1199px) and (min-width: 769px) {
+  .nav-links {
+    gap: 20px;
   }
-  
-  @media (max-width: 480px) {
-    .nav-links {
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-    nav {
-      padding: 10px 0 20px 0;
-    }
+  .paradiv {
+    padding-right: 20px;
   }
-  
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    height: auto;
+    padding: 15px 0;
+  }
+  .logodiv,
+  .paradiv {
+    width: 100%;
+    justify-content: center;
+    padding-right: 0;
+  }
+  .paradiv {
+    margin-top: 15px;
+  }
+  .nav-links {
+    justify-content: center;
+    gap: 15px;
+  }
+  .nav-links a {
+    font-size: 16px;
+  }
+  .logo {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  nav {
+    padding: 10px 0 20px 0;
+  }
+}
