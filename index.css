@@ -152,7 +152,8 @@ button:hover {
   border-radius: 1vw;
   margin-top: 2vw;
   width: 90%;
-  background-color: rgba(255, 178, 2, 0.2); /* Orange with 20% opacity */
+  background-color: rgba(255, 178, 2, 0.2);
+   /* Orange with 20% opacity */
 
   border: 0.2vw dashed #ffb202;
   display: flex;
@@ -160,7 +161,11 @@ button:hover {
   align-items: center;
   align-content: space-evenly;
   flex-direction: column;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
+
 .upload-icon {
   font-size: 3vw;
 }
@@ -201,6 +206,7 @@ button:hover {
     background-color: white;
     outline: none;
     margin-left: 1.2vw;
+   
     margin-top: 1vw;
     transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 
@@ -208,6 +214,7 @@ button:hover {
     box-shadow: 0 0.2vw 0.4vw rgba(0, 0, 0, 0.08), 
                 inset 0 0.1vw 0.2vw rgba(0, 0, 0, 0.03); /* Softer inner shadow */
 }
+
 
 /* Border and shadow effect when focused */
 #product-type:focus {
@@ -248,6 +255,8 @@ button:hover {
   transition: opacity 1s ease;
   opacity: 1;
 }
+
+
 
 .designlogo {
   font-size: 15vw;

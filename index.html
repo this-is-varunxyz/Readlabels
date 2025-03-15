@@ -1,91 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Main</title>
-    <link rel="stylesheet" href="index.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <nav>
-      <div class="logodiv">
-        <div class="logo"></div>
-      </div>
-      <div class="paradiv">
-        <div class="nav-links">
-          <a href="#" class="howitworks">How it works?</a>
-          <a href="#" class="whytouse">Why to use?</a>
-          <a href="#" class="about">About us</a>
-          <a href="#" class="contact">Contact</a>
-        </div>
-      </div>
-    </nav>
-    <main>
-      <div class="design">
-        <div class="design-background"></div>
-        <div class="design-overlay"></div>
-
-        <div class="designlogo Natural">Natural</div>
-        <div class="designlogo Chemical">Chemical</div>
-        <div class="product">
-          <div class="soda"></div>
-          <div class="soda2"></div>
-        </div>
-        
-    
+<!DOCTYPE html> 
+<html lang="en">   
+  <head>     
+    <meta charset="UTF-8" />     
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />     
+    <title>Main</title>     
+    <link rel="stylesheet" href="index.css" />     
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600&display=swap" rel="stylesheet" />   
+  </head>   
+  <body>     
+    <nav>       
+      <div class="logodiv">         
+        <div class="logo"></div>       
+      </div>       
+      <div class="paradiv">         
+        <div class="nav-links">           
+          <a href="#" class="howitworks">How it works?</a>           
+          <a href="#" class="whytouse">Why to use?</a>           
+          <a href="#" class="about">About us</a>           
+          <a href="#" class="contact">Contact</a>         
+        </div>       
+      </div>     
+    </nav>     
+    <main>       
+      <div class="design">         
+        <div class="design-background"></div>         
+        <div class="design-overlay"></div>          
+        <div class="designlogo Natural">Natural</div>         
+        <div class="designlogo Chemical">Chemical</div>         
+        <div class="product">           
+          <div class="soda"></div>           
+          <div class="soda2"></div>         
+        </div>                            
+      </div>       
+      <div class="main-container">         
+        <div class="main-box">             
+          <p class="know">Know what you use!</p>             
+          <div class="designdiv"></div>             
+          <p class="howtouse">                 
+            Upload your products image and provide details below.             
+          </p>             
+          <label class="upload-div" for="input-files" style="position: relative;">               
+            <input type="file" accept="image/png,image/jpg" id="input-files" style="visibility: hidden;">                 
+            <div class="upload-icon hidden">📸</div>                 
+            <p class="drop hidden">Drop your product image here</p>                 
+            <p class="browse hidden">or click to browse from your device</p>              
+          </label>             
+          <p class="typeofproduct">📋 Type of product</p>             
+          <input type="text" id="product-type" placeholder="e.g. Beverage, Snack, Cosmetic, etc.">             
+          <p class="typeofproduct expect"><span style="color: #ff9900;">🗸</span> What you expect from this product? </p>             
+          <textarea id="product-expectations" style="width: 90%; height: 5vw; padding: 0.7vw; font-size: 1vw; border: 0.1vw solid #ddd; border-radius: 0.5vw; background-color: white; outline: none; margin-left: 1.2vw; margin-top: 1vw; transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out; box-shadow: 0 0.2vw 0.4vw rgba(0, 0, 0, 0.08), inset 0 0.1vw 0.2vw rgba(0, 0, 0, 0.03); resize: none;" placeholder="Tell us what you're looking for or concerned about..."></textarea>                          
+          <button>Next</button>                    
+        </div>       
+      </div>                   
+    </main>     
+    <script>       
+      const product = document.querySelector(".product");       
+      const design = document.querySelector(".design-overlay");       
+      const natural = document.querySelector(".Natural");       
+      const chemical = document.querySelector(".Chemical");       
+      const inputfile = document.querySelector("#input-files");       
+      const uploadndiv = document.querySelector(".upload-div");       
+      const hiddenelemnts = document.querySelectorAll(".hidden");  
       
-      </div>
-      <div class="main-container">
-        <div class="main-box">
-            <p class="know">Know what you use!</p>
-            <div class="designdiv"></div>
-            <p class="howtouse">
-                Upload your products details and provide details below.
-            </p>
-            <div class="upload-div">
-                <div class="upload-icon">📸</div>
-                <p class="drop">Drop your product image here</p>
-                <p class="browse">or click to browse from your device</p>
-
-            </div>
-            <p class="typeofproduct">📋 Type of product</p>
-            <input type="text" id="product-type" placeholder="e.g. Beverage, Snack, Cosmetic, etc.">
-            <p class="typeofproduct expect "><span style="color:  #ff9900;" >🗸</span> What you expect from this product? </p>
-            <input type="text" id="product-type" style="height: 5vw;" placeholder="Tell us what you're looking for or concerned about...">
-            <button>Next</button>
-          
-        </div>
-      </div>
+      inputfile.addEventListener("change", () => {   
+        let Imgurl = URL.createObjectURL(inputfile.files[0]);   
+        uploadndiv.style.backgroundImage = `url(${Imgurl})`;   
+        uploadndiv.style.border = 0;   
+        hiddenelemnts.forEach((element, index) => {     
+          element.style.visibility = "hidden";    
+        });        
+      });        
       
+      product.addEventListener("mouseenter", function() {         
+        design.style.opacity = 0;         
+        chemical.style.opacity = 1;         
+        natural.style.opacity = 0;                 
+      });        
       
-    </main>
-    <script>
-      const product = document.querySelector(".product");
-      const design = document.querySelector(".design-overlay");
-      const natural = document.querySelector(".Natural");
-      const chemical= document.querySelector(".Chemical");
-
-
-      product.addEventListener("mouseenter", function () {
-        design.style.opacity = 0;
-        chemical.style.opacity = 1;
-        natural.style.opacity = 0;
-        
-
-      });
-
-      product.addEventListener("mouseleave", function () {
-        design.style.opacity = 1;
-      chemical.style.opacity = 0;
-      natural.style.opacity =1;
-
-
-      });
-
-    </script>
-  </body>
+      product.addEventListener("mouseleave", function() {         
+        design.style.opacity = 1;       
+        chemical.style.opacity = 0;       
+        natural.style.opacity = 1;         
+      });      
+    </script>   
+  </body> 
 </html>
