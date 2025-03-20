@@ -1,0 +1,17 @@
+{
+  "name": "read-label",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000R\u0000e\u0000a\u0000d\u0000l\u0000a\u0000b\u0000e\u0000l\u0000s\u0000\r\u0000 \u0000",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "openai": "^4.88.0"
+  }
+}
