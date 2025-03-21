@@ -38,18 +38,20 @@
           <div class="designdiv"></div>             
           <p class="howtouse">                 
             Upload your products image and provide details below.             
-          </p>             
+          </p>
+          <form action="/result" method="post">            
           <label class="upload-div" for="input-files" style="position: relative;">               
-            <input type="file" accept="image/png,image/jpg" id="input-files" style="visibility: hidden;">                 
+            <input type="file" accept="image/png,image/jpg" id="input-files" name="imageFile"  style="visibility: hidden;">                 
             <div class="upload-icon hidden">📸</div>                 
             <p class="drop hidden">Drop your product image here</p>                 
             <p class="browse hidden">or click to browse from your device</p>              
           </label>             
           <p class="typeofproduct">📋 Type of product</p>             
-          <input type="text" id="product-type" placeholder="e.g. Beverage, Snack, Cosmetic, etc.">             
+          <input type="text" id="product-type" name="productType" placeholder="e.g. Beverage, Snack, Cosmetic, etc.">             
           <p class="typeofproduct expect"><span style="color: #ff9900;">🗸</span> What you expect from this product? </p>             
-          <textarea id="product-expectations" style="width: 90%; height: 5vw; padding: 0.7vw; font-size: 1vw; border: 0.1vw solid #ddd; border-radius: 0.5vw; background-color: white; outline: none; margin-left: 1.2vw; margin-top: 1vw; transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out; box-shadow: 0 0.2vw 0.4vw rgba(0, 0, 0, 0.08), inset 0 0.1vw 0.2vw rgba(0, 0, 0, 0.03); resize: none;" placeholder="Tell us what you're looking for or concerned about..."></textarea>                          
-          <button>Next</button>                    
+          <textarea id="product-expectations" name="productExpect" style="width: 90%; height: 5vw; padding: 0.7vw; font-size: 1vw; border: 0.1vw solid #ddd; border-radius: 0.5vw; background-color: white; outline: none; margin-left: 1.2vw; margin-top: 1vw; transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out; box-shadow: 0 0.2vw 0.4vw rgba(0, 0, 0, 0.08), inset 0 0.1vw 0.2vw rgba(0, 0, 0, 0.03); resize: none;" placeholder="Tell us what you're looking for or concerned about..."></textarea>                          
+          <button type="submit" >Next</button>   
+        </form>                  
         </div>       
       </div>                   
     </main>     
