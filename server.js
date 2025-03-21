@@ -13,14 +13,16 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname,"public")))
 const storage = multer.diskStorage({
-  destination:(req,file,cb)=>{
-    return cb(null,"./public/uploads");
-
+  destination: (req, file, cb) => {
+    return cb(null, "./public/uploads");
   },
-  filename: (req,file,cb)=>{
-return cb(null,'productimage')
+  filename: (req, file, cb) => {
+    // Get the file extension from the original filename
+    const fileExt = path.extname(file.originalname);
+    // Save as productimage.jpg or productimage.png
+    return cb(null, 'productimage' + fileExt);
   }
-})
+});
 const upload = multer({storage})
 require("dotenv").config();
 const apiKey = process.env.GEMINI_API_KEY;
@@ -31,23 +33,31 @@ app.get('/', function (req, res) {
 
 
 })
-app.post('/result', upload.single('imageFile'),async (req, res) => {
-  console.log(req.body.imageFile);
+// app.post('/result', upload.single('imageFile'),async (req, res) => {
+//   console.log(req.body.file);
  
-res.render("result",{image:`uploads/productimage`});
-  // try {
-  //   let answer = JSON.parse(await run(`give me a object in javascript and dont write a single thing extra just give this thing {"name":xyz,"cost":xyz} replace xyz with anythign else and dont even write javascirpt in bigning dont declare this too`));
+// res.render("result",{image:`uploads/productimage`});
+//   // try {
+//   //   let answer = JSON.parse(await run(`give me a object in javascript and dont write a single thing extra just give this thing {"name":xyz,"cost":xyz} replace xyz with anythign else and dont even write javascirpt in bigning dont declare this too`));
     
-  //   // Combine all template variables in one object
-  //   res.render('result', {
-  //     answer: answer,
-  //     image: req.body.imageFile
+//   //   // Combine all template variables in one object
+//   //   res.render('result', {
+//   //     answer: answer,
+//   //     image: req.body.imageFile
       
-  //   });
-  // } catch (error) {
-  //   console.error("Error:", error);
-  //   res.status(500).send("An error occurred");
-  // }
+//   //   });
+//   // } catch (error) {
+//   //   console.error("Error:", error);
+//   //   res.status(500).send("An error occurred");
+//   // }
+// });
+app.post('/result', upload.single('imageFile'), async (req, res) => {
+  if (req.file) {
+    const fileExt = path.extname(req.file.originalname);
+    res.render("result", {image: `uploads/productimage${fileExt}`});
+  } else {
+    res.status(400).send("No file uploaded");
+  }
 });
 
 const model = genAI.getGenerativeModel({
