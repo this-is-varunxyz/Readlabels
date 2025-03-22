@@ -1,358 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Analysis Results</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-    
-    body {
-      background-color: #f9f9f9;
-      padding: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    
-    .header h1 {
-      font-size: 32px;
-      color: #333;
-      margin-bottom: 10px;
-    }
-    
-    .header-underline {
-      height: 3px;
-      width: 180px;
-      background-color: #e74c3c;
-      margin: 0 auto;
-    }
-    
-    .product-card {
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-      padding: 30px;
-      width: 100%;
-      margin-bottom: 30px;
-    }
-    
-    .product-content {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-    }
-    
-    .product-image {
-      background-color: #f5f5f5;
-      border-radius: 8px;
-      height: 250px;
-      width: 250px;
-      flex-shrink: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .product-details {
-      flex: 1;
-      min-width: 250px;
-    }
-    
-    .camera-icon {
-      font-size: 24px;
-      color: #777;
-    }
-    
-    .section-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 20px;
-      font-size: 22px;
-      color: #333;
-    }
-    
-    .section-title-analysis {
-      font-size: 28px;
-      color: #ff7f00;
-      margin-bottom: 5px;
-    }
-    
-    .orange-underline {
-      height: 3px;
-      width: 80px;
-      background-color: #ff7f00;
-      margin-bottom: 30px;
-    }
-    
-    .section-icon {
-      font-size: 24px;
-    }
-    
-    .product-description {
-      font-size: 16px;
-      line-height: 1.5;
-      color: #333;
-      margin-bottom: 25px;
-    }
-    
-    .rating-container {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 25px;
-    }
-    
-    .star-icon {
-      color: #f1c40f;
-      font-size: 24px;
-    }
-    
-    .rating-text {
-      font-size: 18px;
-      font-weight: bold;
-    }
-    
-    .rating-value {
-      font-size: 22px;
-      font-weight: bold;
-    }
-    
-    .rating-bar {
-      width: 70%;
-      height: 12px;
-      background-color: #e0e0e0;
-      border-radius: 6px;
-      overflow: hidden;
-    }
-    
-    .rating-fill {
-      height: 100%;
-      background: linear-gradient(to right, #f39c12, #e74c3c);
-      border-radius: 6px;
-      width: 70%; /* This would be dynamic based on rating */
-    }
-    
-    .buying-verdict {
-      margin-bottom: 15px;
-    }
-    
-    .buying-verdict span {
-      font-weight: bold;
-    }
-    
-    .verdict-yes {
-      color: #27ae60;
-    }
-    
-    .skin-type {
-      font-style: italic;
-      color: #666;
-    }
-    
-    .ingredients-container {
-      width: 100%;
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-      padding: 30px;
-    }
-    
-    .ingredients-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-    
-    .ingredient-item {
-      display: flex;
-      flex-direction: column;
-      padding: 20px 0;
-      border-left: 4px solid #4CAF50;
-      padding-left: 16px;
-      margin-bottom: 5px;
-    }
-    
-    .ingredient-name {
-      font-weight: bold;
-      color: #333;
-      font-size: 18px;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-    }
-    
-    .ingredient-dot {
-      width: 12px;
-      height: 12px;
-      background-color: #4CAF50;
-      border-radius: 50%;
-      margin-right: 10px;
-      display: inline-block;
-    }
-    
-    .ingredient-description {
-      color: #666;
-      line-height: 1.5;
-    }
-    
-    @media (max-width: 768px) {
-      .product-content {
-        flex-direction: column;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Analysis Results</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
       }
-      
-      .product-image {
+
+      body {
+        background-color: #f9f9f9;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .header h1 {
+        font-size: 32px;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .header-underline {
+        height: 3px;
+        width: 180px;
+        background-color: #e74c3c;
+        margin: 0 auto;
+      }
+
+      .product-card {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        padding: 30px;
         width: 100%;
+        margin-bottom: 30px;
       }
-    }
-  </style>
-</head>
-<body>
-  <div class="header">
-    <h1>Product Analysis Results</h1>
-    <div class="header-underline"></div>
-  </div>
-  
-  <div class="product-card">
-    <div class="product-content">
-      <div class="product-image" style=" background-image: url('<%=image%>'); background-repeat: no-repeat; background-position: center; background-size: cover;" >
-      </div>
-      
-      <div class="product-details">
-        <div class="section-title">
-          <div class="section-icon">🎯</div>
-          <h2>What You Expect</h2>
-        </div>
-        
-        <p class="product-description">
-          Cleanses skin, removes dirt, gives glow, and soothes skin.
-        </p>
-        
-        <div class="rating-container">
-          <div class="star-icon">⭐</div>
-          <div class="rating-text">Rating:</div>
-          <div class="rating-value">7/10</div>
-          <div class="rating-bar">
-            <div class="rating-fill"></div>
+
+      .product-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+      }
+
+      .product-image {
+        background-color: #f5f5f5;
+        border-radius: 8px;
+        height: 250px;
+        width: 250px;
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .product-details {
+        flex: 1;
+        min-width: 250px;
+      }
+
+      .camera-icon {
+        font-size: 24px;
+        color: #777;
+      }
+
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+        font-size: 22px;
+        color: #333;
+      }
+
+      .section-title-analysis {
+        font-size: 28px;
+        color: #ff7f00;
+        margin-bottom: 5px;
+      }
+
+      .orange-underline {
+        height: 3px;
+        width: 80px;
+        background-color: #ff7f00;
+        margin-bottom: 30px;
+      }
+
+      .section-icon {
+        font-size: 24px;
+      }
+
+      .product-description {
+        font-size: 16px;
+        line-height: 1.5;
+        color: #333;
+        margin-bottom: 25px;
+      }
+
+      .rating-container {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 25px;
+      }
+
+      .star-icon {
+        color: #f1c40f;
+        font-size: 24px;
+      }
+
+      .rating-text {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .rating-value {
+        font-size: 22px;
+        font-weight: bold;
+      }
+
+      .rating-bar {
+        width: 70%;
+        height: 12px;
+        background-color: #e0e0e0;
+        border-radius: 6px;
+        overflow: hidden;
+      }
+
+      .rating-fill {
+        height: 100%;
+        background: linear-gradient(to right, #f39c12, #e74c3c);
+        border-radius: 6px;
+        width: 70%; /* This would be dynamic based on rating */
+      }
+
+      .buying-verdict {
+        margin-bottom: 15px;
+      }
+
+      .buying-verdict span {
+        font-weight: bold;
+      }
+
+      .verdict-yes {
+        color: #27ae60;
+      }
+
+      .skin-type {
+        font-style: italic;
+        color: #666;
+      }
+
+      .ingredients-container {
+        width: 100%;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        padding: 30px;
+      }
+
+      .ingredients-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .ingredient-item {
+        display: flex;
+        flex-direction: column;
+        padding: 20px 0;
+        border-left: 4px solid #4caf50;
+        padding-left: 16px;
+        margin-bottom: 5px;
+      }
+
+      .ingredient-name {
+        font-weight: bold;
+        color: #333;
+        font-size: 18px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+      }
+
+      .ingredient-dot {
+        width: 12px;
+        height: 12px;
+        background-color: #4caf50;
+        border-radius: 50%;
+        margin-right: 10px;
+        display: inline-block;
+      }
+
+      .ingredient-description {
+        color: #666;
+        line-height: 1.5;
+      }
+
+      @media (max-width: 768px) {
+        .product-content {
+          flex-direction: column;
+        }
+
+        .product-image {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Product Analysis Results</h1>
+      <div class="header-underline"></div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-content">
+        <div
+          class="product-image"
+          style="
+            background-image: url('<%=image%>');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+          "
+        ></div>
+
+        <div class="product-details">
+          <div class="section-title">
+            <div class="section-icon">🎯</div>
+            <h2>What You Can Expect</h2>
           </div>
-        </div>
-        
-        <div class="buying-verdict">
-          <span>Worth Buying:</span> <span class="verdict-yes">Yes</span>
-        </div>
-        
-        <p class="skin-type">
-          Good for normal/oily skin. Avoid if you have sensitive skin.
-        </p>
-      </div>
-    </div>
-  </div>
-  
-  <div class="ingredients-container">
-    <h2 class="section-title-analysis">Ingredients Analysis</h2>
-    <div class="orange-underline"></div>
-    
-    <div class="ingredients-list">
-      <div class="ingredient-item">
-        <div class="ingredient-name">
-          <span class="ingredient-dot"></span>
-          Purified Water
-        </div>
-        <div class="ingredient-description">
-          Base of the product. Acts as the primary solvent for other ingredients and ensures proper consistency of the formulation.
-        </div>
-      </div>
-      
-      <div class="ingredient-item">
-        <div class="ingredient-name">
-          <span class="ingredient-dot"></span>
-          Sodium Lauryl Sarcosinate
-        </div>
-        <div class="ingredient-description">
-          Cleanses skin gently without stripping natural oils. A milder alternative to traditional sulfate cleansers that provides effective cleansing while maintaining skin barrier.
-        </div>
-      </div>
-      
-      <div class="ingredient-item">
-        <div class="ingredient-name">
-          <span class="ingredient-dot"></span>
-          Glycerine
-        </div>
-        <div class="ingredient-description">
-          Keeps skin hydrated by drawing moisture from the air into the skin. Acts as a humectant that prevents water loss and maintains skin moisture balance.
-        </div>
-      </div>
-      
-      <div class="ingredient-item">
-        <div class="ingredient-name">
-          <span class="ingredient-dot"></span>
-          Niacinamide
-        </div>
-        <div class="ingredient-description">
-          Brightens skin and reduces redness. A form of vitamin B3 that improves skin texture, minimizes pores, and strengthens the skin barrier. Helps regulate oil production.
-        </div>
-      </div>
-      
-      <div class="ingredient-item">
-        <div class="ingredient-name">
-          <span class="ingredient-dot"></span>
-          Salicylic Acid
-        </div>
-        <div class="ingredient-description">
-          Exfoliates and unclogs pores. A beta hydroxy acid (BHA) that penetrates oil-filled pores to remove dead skin cells and excess sebum. Effective for acne-prone skin.
-        </div>
-      </div>
-      
-      <div class="ingredient-item">
-        <div class="ingredient-name">
-          <span class="ingredient-dot"></span>
-          Licorice Extract
-        </div>
-        <div class="ingredient-description">
-          Soothes and lightens skin. Contains glabridin which helps reduce hyperpigmentation and inhibits melanin production. Has anti-inflammatory properties to calm irritation.
-        </div>
-      </div>
-      
-      <div class="ingredient-item">
-        <div class="ingredient-name">
-          <span class="ingredient-dot"></span>
-          Allantoin
-        </div>
-        <div class="ingredient-description">
-          Calms and repairs skin. Known for its healing and skin-soothing properties. Promotes cell regeneration and helps in wound healing. Suitable for sensitive and irritated skin.
-        </div>
-      </div>
-      
-      <div class="ingredient-item">
-        <div class="ingredient-name">
-          <span class="ingredient-dot"></span>
-          Menthol
-        </div>
-        <div class="ingredient-description">
-          Gives a cooling feel. Creates a refreshing sensation on the skin. Can temporarily reduce inflammation and itching but may cause sensitivity in some individuals.
-        </div>
-      </div>
-      
-      <div class="ingredient-item">
-        <div class="ingredient-name">
-          <span class="ingredient-dot"></span>
-          Methylchloroisothiazolinone
-        </div>
-        <div class="ingredient-description">
-          Preservative that can irritate sensitive skin. Used to prevent bacterial and fungal growth in water-based products. Has been associated with contact dermatitis in some individuals.
+
+          <p class="product-description"><%=answer.whatcanyouexpect%></p>
+
+          <div class="rating-container">
+            <div class="star-icon">⭐</div>
+            <div class="rating-text">Rating:</div>
+            <div class="rating-value"><%=answer.rating%></div>
+            <div class="rating-bar">
+              <div class="rating-fill"></div>
+            </div>
+          </div>
+
+          <div class="buying-verdict">
+            <span>Worth Buying:</span>
+          </div>
+
+          <p class="skin-type">
+            <span class="verdict-yes"><%= answer.isproductworthbuying%></span>
+          </p>
         </div>
       </div>
     </div>
-  </div>
-</body>
+
+    <div class="ingredients-container">
+      <h2 class="section-title-analysis">Ingredients Analysis</h2>
+      <div class="orange-underline"></div>
+
+      <div class="ingredients-list">
+        <% Object.entries(answer.ingredients).forEach(([name, description]) => { %>
+          <div class="ingredient-item">
+            <div class="ingredient-name">
+              <span class="ingredient-dot"></span>
+              <%= name %>
+            </div>
+            <div class="ingredient-description">
+              <%= description %>
+            </div>
+          </div>
+        <% }) %>
+        
+      </div>
+    </div>
+  </body>
 </html>
