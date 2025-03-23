@@ -140,7 +140,7 @@
         height: 100%;
         background: linear-gradient(to right, #f39c12, #e74c3c);
         border-radius: 6px;
-        width: 70%; /* This would be dynamic based on rating */
+        width: 0;/* This would be dynamic based on rating */
       }
 
       .buying-verdict {
@@ -178,9 +178,10 @@
         display: flex;
         flex-direction: column;
         padding: 20px 0;
-        border-left: 4px solid #4caf50;
+        border-left: 4px solid #ff7f00;
         padding-left: 16px;
         margin-bottom: 5px;
+        
       }
 
       .ingredient-name {
@@ -195,7 +196,7 @@
       .ingredient-dot {
         width: 12px;
         height: 12px;
-        background-color: #4caf50;
+        background-color: #ff7f00;
         border-radius: 50%;
         margin-right: 10px;
         display: inline-block;
@@ -282,5 +283,34 @@
         
       </div>
     </div>
+     
+<script>
+ // Extract rating value and convert it to percentage
+let ratingText = "<%= answer.rating %>"; // Example: "7/10"
+let ratingValue = parseInt(ratingText); // Extracts 7
+let ratingPercentage = (ratingValue / 10) * 100; // Converts to 70%
+
+// Set the width dynamically
+document.querySelector(".rating-fill").style.width = ratingPercentage + "%";
+
+// Select all ingredient descriptions and dots
+let ingredients = document.querySelectorAll(".ingredient-description");
+ingredients.forEach((ingredient, index) => {
+  let dot = document.querySelectorAll(".ingredient-dot")[index];
+  let line = document.querySelectorAll(".ingredient-item")[index] // Get corresponding dot
+  if (ingredient.textContent.toLowerCase().includes("chemical")) {
+    dot.style.backgroundColor = "red";
+    line.style.borderColor = "red";
+     // Change color if "safe" is found
+  }
+  if (ingredient.textContent.toLowerCase().includes("natural")) {
+    dot.style.backgroundColor = "green";
+    line.style.borderColor = "green";
+     // Change color if "safe" is found
+  }
+});
+</script>
+
   </body>
+  
 </html>

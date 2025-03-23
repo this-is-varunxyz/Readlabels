@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="index.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600&display=swap" rel="stylesheet" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+      body {
+        font-family: 'Segoe UI', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+      }
+      
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+      
+      .logodiv {
+        display: flex;
+        align-items: center;
+      }
+      
+      .logo {
+        background-image: url(images/logo1.png);
+        height: 80px;
+        margin-left: 2vw;
+        width: 80px;
+        aspect-ratio: 1;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: inline-block;
+      }
+      
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+      
+      .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+      
+      .nav-links a:hover {
+        color: #ff9900;
+      }
+      
+      .contact {
+        color: #ff9900 !important;
+        font-weight: 600 !important;
+      }
+      
+      .hero-section {
+        position: relative;
+        height: 40vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background-color: #f0f8ff;
+      }
+      
+      .hero-background {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #f0f8ff 0%, #e6f7ff 100%);
+        z-index: 1;
+      }
+      
+      .hero-overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.8) 70%);
+        z-index: 2;
+        transition: opacity 0.5s;
+      }
+      
+      .hero-content {
+        position: relative;
+        z-index: 3;
+        text-align: center;
+        max-width: 800px;
+        padding: 0 2rem;
+      }
+      
+      .hero-title {
+        font-size: 3rem;
+        color: #333;
+        margin-bottom: 1rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 2rem;
+      }
+      
+      .contact-section {
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
+      
+      .contact-form-container {
+        background-color: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      }
+      
+      .section-title {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 1.5rem;
+      }
+      
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+      
+      .form-label {
+        display: block;
+        font-weight: 500;
+        color: #333;
+        margin-bottom: 0.5rem;
+      }
+      
+      .form-input,
+      .form-textarea {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 1rem;
+        transition: border-color 0.3s;
+      }
+      
+      .form-input:focus,
+      .form-textarea:focus {
+        border-color: #ff9900;
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(255, 153, 0, 0.2);
+      }
+      
+      .form-textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+      
+      .submit-button {
+        background-color: #ff9900;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+      
+      .submit-button:hover {
+        background-color: #e68a00;
+        transform: translateY(-2px);
+      }
+      
+      .contact-info {
+        background-color: #f0f8ff;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      }
+      
+      .contact-method {
+        margin-bottom: 2rem;
+      }
+      
+      .contact-method-title {
+        display: flex;
+        align-items: center;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 0.8rem;
+      }
+      
+      .contact-icon {
+        font-size: 1.5rem;
+        color: #ff9900;
+        margin-right: 0.8rem;
+      }
+      
+      .contact-details {
+        color: #555;
+        line-height: 1.6;
+        font-size: 1.1rem;
+      }
+      
+      .contact-details a {
+        color: #ff9900;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      
+      .contact-details a:hover {
+        color: #e68a00;
+        text-decoration: underline;
+      }
+      
+      .social-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      
+      .social-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: white;
+        border-radius: 50%;
+        color: #ff9900;
+        font-size: 1.2rem;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+      
+      .social-link:hover {
+        
+        color: white;
+        transform: translateY(-3px);
+      }
+      
+      .faq-section {
+        margin-top: 4rem;
+        padding: 2rem;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      }
+      
+      .faq-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+      
+      .faq-item {
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        padding: 1.5rem;
+      }
+      
+      .faq-question {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 0.8rem;
+      }
+      
+      .faq-answer {
+        color: #555;
+        line-height: 1.6;
+      }
+      
+      /* Styling for loading indicator */
+      .loading {
+        display: none;
+        margin-left: 10px;
+        vertical-align: middle;
+      }
+      
+      .loading:after {
+        content: " ";
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin-left: 10px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        border-color: #fff transparent #fff transparent;
+        animation: loading 1.2s linear infinite;
+      }
+      
+      @keyframes loading {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      
+      /* Status message styling */
+      .status-message {
+        margin-top: 20px;
+        padding: 10px;
+        border-radius: 5px;
+        display: none;
+      }
+      
+      .success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+      
+      .error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+      
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2rem;
+        }
+        
+        .hero-subtitle {
+          font-size: 1rem;
+        }
+        
+        .contact-section {
+          grid-template-columns: 1fr;
+        }
+        
+        .section-title {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logodiv">
+        <a href="/main">
+          <div class="logo"></div>
+        </a>
+      </div>
+      <div class="paradiv">
+        <div class="nav-links">
+          <a href="/howitworks" class="howitworks">How it works?</a>
+          <a href="/whytouse" class="whytouse">Why to use?</a>
+          <a href="/aboutus" class="about">About us</a>
+          <a href="/contact" class="contact">Contact</a>
+        </div>
+      </div>
+    </nav>
+    
+    <section class="hero-section">
+      <div class="hero-background"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">Get in Touch</h1>
+        <p class="hero-subtitle">Have questions about Read Labels? We're here to help!</p>
+      </div>
+    </section>
+    
+    <section class="contact-section">
+      <div class="contact-form-container">
+        <h2 class="section-title">Send Us a Message</h2>
+        
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" id="name" name="name" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" id="email" name="email" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject" class="form-label">Subject</label>
+            <input type="text" id="subject" name="subject" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message" class="form-label">Your Message</label>
+            <textarea id="message" name="message" class="form-textarea" required></textarea>
+          </div>
+          
+          <button type="submit" class="submit-button">
+            Send Message
+            <span class="loading" id="loading-indicator"></span>
+          </button>
+          
+          <div id="status-message" class="status-message"></div>
+        </form>
+      </div>
+      
+      <div class="contact-info">
+        <h2 class="section-title">Contact Information</h2>
+        
+        <div class="contact-method">
+          <div class="contact-method-title">
+            <span class="contact-icon">✉️</span>
+            Email
+          </div>
+          <div class="contact-details">
+            <a href="mailto:varunkushwah500@gmail.com">varunkushwah500@gmail.com</a>
+          </div>
+        </div>
+        
+        <div class="contact-method">
+          <div class="contact-method-title">
+            <span class="contact-icon">🌐</span>
+            Follow Us
+          </div>
+          <div class="contact-details">
+            Connect with us on social media to get the latest updates.
+            
+            <div class="social-links">
+              <a href="#" class="social-link"><img src="images/x.png" style="width: 100%; height: 100%;  " alt=""></a>
+              <a href="#"  class="social-link"><img src="images/instagram.png" style="width: 100%; height: 100%;  " alt=""></a>
+              <a href="#" class="social-link"><img src="images/linkdin.png" style="width: 100%; height: 100%;  " alt=""></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-method">
+          <div class="contact-method-title">
+            <span class="contact-icon">⏱️</span>
+            Response Time
+          </div>
+          <div class="contact-details">
+            We typically respond to all inquiries within 24-48 hours during business days.
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="faq-section">
+      <h2 class="section-title">Frequently Asked Contact Questions</h2>
+      
+      <div class="faq-grid">
+        <div class="faq-item">
+          <div class="faq-question">How quickly will I receive a response?</div>
+          <div class="faq-answer">We aim to respond to all inquiries within 24-48 hours during business days. For urgent matters, please mention "Urgent" in your subject line.</div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">Can I request a specific feature?</div>
+          <div class="faq-answer">Absolutely! We welcome feature requests and feedback. Please describe your idea in detail, and our development team will evaluate it for future updates.</div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">How can I report an inaccurate analysis?</div>
+          <div class="faq-answer">If you believe our analysis is inaccurate, please send us the details including the product name, the specific ingredients in question, and what you believe is incorrect. This helps us improve our system.</div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">Do you offer partnership opportunities?</div>
+          <div class="faq-answer">Yes, we're open to collaborations with brands, retailers, and health-conscious organizations. Please contact us with "Partnership" in the subject line for more information.</div>
+        </div>
+      </div>
+    </section>
+    
+    <script>
+      // Initialize EmailJS
+      (function() {
+        // Replace with your EmailJS public key
+        emailjs.init("template_3xcbpbj");
+      })();
+      
+      // Hero section scroll effect
+      const heroOverlay = document.querySelector(".hero-overlay");
+      
+      window.addEventListener("scroll", () => {
+        const scrollPosition = window.scrollY;
+        if (scrollPosition < 400) {
+          heroOverlay.style.opacity = 0.7 + (scrollPosition / 1000);
+        }
+      });
+      
+      // Form submission handling
+      document.getElementById("contact-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        
+        // Get form data
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const subject = document.getElementById("subject").value;
+        const message = document.getElementById("message").value;
+        
+        // Basic validation
+        if (name.trim() === "" || email.trim() === "" || subject.trim() === "" || message.trim() === "") {
+          showStatus("Please fill out all fields", "error");
+          return;
+        }
+        
+        // Basic email validation
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          showStatus("Please enter a valid email address", "error");
+          return;
+        }
+        
+        // Show loading indicator
+        document.getElementById("loading-indicator").style.display = "inline-block";
+        document.querySelector(".submit-button").disabled = true;
+        
+        // Prepare template parameters
+        const templateParams = {
+          to_email: "varunkushwah500@gmail.com",
+          from_name: name,
+          from_email: email,
+          subject: subject,
+          message: message
+        };
+        
+        // Send email using EmailJS
+        emailjs.send('service_ruo9iuh', 'template_contact', templateParams)
+          .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            showStatus("Thanks for your message! We'll get back to you soon.", "success");
+            document.getElementById("contact-form").reset();
+          }, function(error) {
+            console.log('FAILED...', error);
+            showStatus("Sorry, there was an error sending your message. Please try again later.", "error");
+          })
+          .finally(function() {
+            // Hide loading indicator
+            document.getElementById("loading-indicator").style.display = "none";
+            document.querySelector(".submit-button").disabled = false;
+          });
+      });
+      
+      // Function to show status messages
+      function showStatus(message, type) {
+        const statusElement = document.getElementById("status-message");
+        statusElement.textContent = message;
+        statusElement.className = "status-message " + type;
+        statusElement.style.display = "block";
+        
+        // Auto hide after 5 seconds for success messages
+        if (type === "success") {
+          setTimeout(function() {
+            statusElement.style.display = "none";
+          }, 5000);
+        }
+      }
+    </script>
+  </body>
+</html>

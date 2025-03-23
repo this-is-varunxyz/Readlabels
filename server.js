@@ -3,6 +3,7 @@ const express = require("express");
 const path = require("path");
 const multer = require("multer");
 const fs = require("fs");
+const { get } = require("http");
 const app = express();
 
 app.set("view engine", "ejs");
@@ -23,6 +24,7 @@ const storage = multer.diskStorage({
   },
 });
 
+
 const upload = multer({ storage });
 
 require("dotenv").config();
@@ -42,6 +44,13 @@ function fileToGenerativePart(buffer, mimeType) {
 app.get("/", function (req, res) {
   res.render("index");
 });
+app.get("/aboutus",(req,res)=>{
+  res.render("aboutus");
+})
+app.get("/main",(req,res)=>{
+  res.render("index");
+})
+
 
 app.post("/result", upload.single("imageFile"), async (req, res) => {
   try {
@@ -76,10 +85,10 @@ User expectations: ${req.body.productExpect}
 
 Examine text, labels, and ingredients visible in the image.
 Return EXACTLY this JSON format with no comments, explanations, backticks, or markdown:
-{"whatcanyouexpect":"what can you expect from this product in 5 words",
+{"whatcanyouexpect":"see what user are expecting from this product and tell if they can expect that or not and also what they can expect",
 "rating":"give rating 1 to 10 eg 7/10 like this",
 "isproductworthbuying":"yes/no with reason with only 6-7 words ",
-"ingredients":{"ingrediantname":descibe the ingrediants in most simple english possible what that ingrediant do }}` },
+"ingredients":{"ingrediantname": ing the biggining if the ingrediant is chemical or not if chemical tell (chemical) if not than say (natural) descirbe the ingrediant in most easy english and also tell what that ingrediant do }}` },
       fileToGenerativePart(imageBuffer, mimeType),
     ];
 
@@ -104,6 +113,9 @@ Return EXACTLY this JSON format with no comments, explanations, backticks, or ma
     res.status(500).send("An error occurred: " + error.message);
   }
 });
+app.get("/howitworks",(req,res)=>{
+  res.render("howitworks")
+})
 
 // Helper function to clean json response
 function cleanJsonResponse(response) {
@@ -138,6 +150,14 @@ const textModel = genAI.getGenerativeModel({
     maxOutputTokens: 2048,
   }
 });
+app.get("/whytouse",(req,res)=>{
+  res.render("whytouse");
+
+})
+app.get("/contact",(req,res)=>{
+  res.render("contact");
+
+})
 
 async function run(message) {
   // For JSON requests, add specific instruction

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Why to Use</title>
+    <link rel="stylesheet" href="index.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      body {
+        font-family: 'Segoe UI', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+      }
+      
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+      
+      .logodiv {
+        display: flex;
+        align-items: center;
+      }
+      
+      .logo {
+        background-image: url(images/logo1.png);
+        height: 80px;
+        margin-left: 2vw;
+        width: 80px;
+        aspect-ratio: 1;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: inline-block;
+      }
+      
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+      
+      .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+      
+      .nav-links a:hover {
+        color: #ff9900;
+      }
+      
+      .whytouse {
+        color: #ff9900 !important;
+        font-weight: 600 !important;
+      }
+      
+      .hero-section {
+        position: relative;
+        height: 40vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background-color: #f0f8ff;
+      }
+      
+      .hero-background {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #f0f8ff 0%, #e6f7ff 100%);
+        z-index: 1;
+      }
+      
+      .hero-overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.8) 70%);
+        z-index: 2;
+        transition: opacity 0.5s;
+      }
+      
+      .hero-content {
+        position: relative;
+        z-index: 3;
+        text-align: center;
+        max-width: 800px;
+        padding: 0 2rem;
+      }
+      
+      .hero-title {
+        font-size: 3rem;
+        color: #333;
+        margin-bottom: 1rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 2rem;
+      }
+      
+      .benefits-section {
+        padding: 4rem 2rem;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 2rem;
+      }
+      
+      .feature-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+      
+      .feature-card {
+        background-color: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      }
+      
+      .feature-icon {
+        font-size: 3rem;
+        color: #ff9900;
+        margin-bottom: 1.5rem;
+      }
+      
+      .feature-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      
+      .feature-description {
+        color: #555;
+        line-height: 1.6;
+        font-size: 1.1rem;
+        text-align: center;
+      }
+      
+      .comparison-container {
+        background-color: #f0f8ff;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        margin-bottom: 3rem;
+      }
+      
+      .comparison-title {
+        font-size: 1.8rem;
+        color: #333;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+      
+      .comparison-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+      
+      .comparison-column {
+        padding: 1.5rem;
+        border-radius: 8px;
+      }
+      
+      .comparison-column.before {
+        background-color: #f9f9f9;
+      }
+      
+      .comparison-column.after {
+        background-color: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      
+      .comparison-header {
+        font-size: 1.3rem;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 1rem;
+        color: #333;
+      }
+      
+      .comparison-column.after .comparison-header {
+        color: #ff9900;
+      }
+      
+      .comparison-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+      
+      .comparison-list li {
+        padding: 0.8rem 0;
+        border-bottom: 1px solid #eee;
+        color: #555;
+        display: flex;
+        align-items: center;
+      }
+      
+      .comparison-list li:last-child {
+        border-bottom: none;
+      }
+      
+      .comparison-list li::before {
+        content: "❌";
+        margin-right: 0.8rem;
+        font-size: 1.1rem;
+      }
+      
+      .comparison-column.after .comparison-list li::before {
+        content: "✅";
+        color: #4CAF50;
+      }
+      
+      .use-cases-container {
+        background-color: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        margin-top: 3rem;
+      }
+      
+      .use-cases-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+      
+      .use-case-card {
+        text-align: center;
+        padding: 1.5rem;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+      }
+      
+      .use-case-card:hover {
+        transform: scale(1.03);
+      }
+      
+      .use-case-icon {
+        font-size: 2.5rem;
+        color: #ff9900;
+        margin-bottom: 1rem;
+      }
+      
+      .use-case-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 0.8rem;
+      }
+      
+      .use-case-description {
+        color: #555;
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+      
+      .testimonial-container {
+        background-color: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        margin-top: 3rem;
+        text-align: center;
+      }
+      
+      .testimonial-quote {
+        font-style: italic;
+        font-size: 1.2rem;
+        color: #555;
+        line-height: 1.8;
+        margin: 2rem auto;
+        max-width: 800px;
+        position: relative;
+      }
+      
+      .testimonial-quote::before, .testimonial-quote::after {
+        content: '"';
+        font-size: 3rem;
+        color: #ff9900;
+        opacity: 0.3;
+        position: absolute;
+      }
+      
+      .testimonial-quote::before {
+        top: -25px;
+        left: -15px;
+      }
+      
+      .testimonial-quote::after {
+        bottom: -50px;
+        right: -15px;
+      }
+      
+      .cta-section {
+        text-align: center;
+        margin: 4rem 0;
+      }
+      
+      .cta-button {
+        display: inline-block;
+        background-color: #ff9900;
+        color: white;
+        font-weight: 600;
+        font-size: 1.2rem;
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+        box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
+      }
+      
+      .cta-button:hover {
+        background-color: #e68a00;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(255, 153, 0, 0.4);
+      }
+      
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2rem;
+        }
+        
+        .hero-subtitle {
+          font-size: 1rem;
+        }
+        
+        .section-title {
+          font-size: 2rem;
+        }
+        
+        .comparison-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logodiv">
+        <a href="/main">
+          <div class="logo"></div>
+        </a>
+      </div>
+      <div class="paradiv">
+        <div class="nav-links">
+          <a href="/howitworks" class="howitworks">How it works?</a>
+          <a href="/whytouse" class="whytouse">Why to use?</a>
+          <a href="/aboutus" class="about">About us</a>
+          <a href="/contact" class="contact">Contact</a>
+        </div>
+      </div>
+    </nav>
+    
+    <section class="hero-section">
+      <div class="hero-background"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">Why Use Read Labels</h1>
+        <p class="hero-subtitle">Understanding what's in your products shouldn't require a chemistry degree</p>
+      </div>
+    </section>
+    
+    <section class="benefits-section">
+      <h2 class="section-title">Key Benefits</h2>
+      
+      <div class="feature-container">
+        <div class="feature-card">
+          <div class="feature-icon">🔍</div>
+          <h3 class="feature-title">Ingredient Transparency</h3>
+          <p class="feature-description">Instantly understand what's in your products with clear, simplified explanations of complex ingredients in plain language.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3 class="feature-title">Quick Decision Making</h3>
+          <p class="feature-description">Stop spending minutes deciphering labels. Get insights in seconds to make informed decisions while shopping.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">⭐</div>
+          <h3 class="feature-title">Personalized Ratings</h3>
+          <p class="feature-description">Receive custom ratings based on what matters to you, whether it's natural ingredients, effectiveness, or specific concerns.</p>
+        </div>
+      </div>
+      
+      <div class="comparison-container">
+        <h3 class="comparison-title">Before & After Using Read Labels</h3>
+        
+        <div class="comparison-grid">
+          <div class="comparison-column before">
+            <h4 class="comparison-header">Without Read Labels</h4>
+            <ul class="comparison-list">
+              <li>Struggling to understand cryptic ingredient names</li>
+              <li>Wasting time researching each unfamiliar ingredient</li>
+              <li>Buying products based on marketing claims, not facts</li>
+              <li>Uncertainty about potential allergens or irritants</li>
+              <li>Making uninformed choices that don't match your needs</li>
+            </ul>
+          </div>
+          
+          <div class="comparison-column after">
+            <h4 class="comparison-header">With Read Labels</h4>
+            <ul class="comparison-list">
+              <li>Clear understanding of every ingredient's purpose</li>
+              <li>Quick results with just a photo and a few details</li>
+              <li>Making purchases based on actual ingredient quality</li>
+              <li>Instant alerts for potential allergens or harmful ingredients</li>
+              <li>Confidence that products match your specific expectations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="use-cases-container">
+        <h2 class="section-title">Perfect For</h2>
+        
+        <div class="use-cases-grid">
+          <div class="use-case-card">
+            <div class="use-case-icon">🥗</div>
+            <h3 class="use-case-title">Health-Conscious Shoppers</h3>
+            <p class="use-case-description">Know exactly what you're putting in and on your body to maintain your health goals.</p>
+          </div>
+          
+          <div class="use-case-card">
+            <div class="use-case-icon">👶</div>
+            <h3 class="use-case-title">Parents</h3>
+            <p class="use-case-description">Ensure the products you buy for your family are safe and free from harmful chemicals.</p>
+          </div>
+          
+          <div class="use-case-card">
+            <div class="use-case-icon">🧴</div>
+            <h3 class="use-case-title">Skincare Enthusiasts</h3>
+            <p class="use-case-description">Identify ingredients that work for your skin type and avoid those that cause reactions.</p>
+          </div>
+          
+          <div class="use-case-card">
+            <div class="use-case-icon">🌱</div>
+            <h3 class="use-case-title">Natural Product Seekers</h3>
+            <p class="use-case-description">Easily distinguish truly natural products from those with clever marketing.</p>
+          </div>
+          
+          <div class="use-case-card">
+            <div class="use-case-icon">⚠️</div>
+            <h3 class="use-case-title">Allergy Sufferers</h3>
+            <p class="use-case-description">Quickly identify potentially problematic ingredients that may trigger your allergies.</p>
+          </div>
+          
+          <div class="use-case-card">
+            <div class="use-case-icon">🛒</div>
+            <h3 class="use-case-title">Everyday Shoppers</h3>
+            <p class="use-case-description">Make more informed choices without needing specialized knowledge about ingredients.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial-container">
+        <h2 class="section-title">What Users Say</h2>
+        
+        <div class="testimonial-quote">
+          I used to spend so much time googling ingredients while shopping. Read Labels has changed everything! Now I just snap a photo, tell the app what I'm looking for, and get clear information about what's actually in the product. It's like having a personal chemist in my pocket!
+        </div>
+      </div>
+      
+      <div class="cta-section">
+        <a href="/main" class="cta-button">Try Read Labels Now</a>
+      </div>
+    </section>
+    
+    <script>
+      const heroOverlay = document.querySelector(".hero-overlay");
+      
+      window.addEventListener("scroll", () => {
+        const scrollPosition = window.scrollY;
+        if (scrollPosition < 400) {
+          heroOverlay.style.opacity = 0.7 + (scrollPosition / 1000);
+        }
+      });
+    </script>
+  </body>
+</html>

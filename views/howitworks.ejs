@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How it Works</title>
+    <link rel="stylesheet" href="index.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      body {
+        font-family: 'Segoe UI', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+      }
+      
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+      
+      .logodiv {
+        display: flex;
+        align-items: center;
+      }
+      
+      .logo {
+        background-image: url(images/logo1.png);
+        height: 80px;
+        margin-left: 2vw;
+        width: 80px;
+        aspect-ratio: 1;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: inline-block;
+      }
+      
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+      
+      .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+      
+      .nav-links a:hover {
+        color: #ff9900;
+      }
+      
+      .howitworks {
+        color: #ff9900 !important;
+        font-weight: 600 !important;
+      }
+      
+      .hero-section {
+        position: relative;
+        height: 40vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background-color: #f0f8ff;
+      }
+      
+      .hero-background {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #f0f8ff 0%, #e6f7ff 100%);
+        z-index: 1;
+      }
+      
+      .hero-overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.8) 70%);
+        z-index: 2;
+        transition: opacity 0.5s;
+      }
+      
+      .hero-content {
+        position: relative;
+        z-index: 3;
+        text-align: center;
+        max-width: 800px;
+        padding: 0 2rem;
+      }
+      
+      .hero-title {
+        font-size: 3rem;
+        color: #333;
+        margin-bottom: 1rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 2rem;
+      }
+      
+      .process-section {
+        padding: 4rem 2rem;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 2rem;
+      }
+      
+      .process-container {
+        position: relative;
+        margin: 3rem 0;
+      }
+      
+      .timeline {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 4px;
+        background-color: #ff9900;
+        transform: translateX(-50%);
+      }
+      
+      .step {
+        display: flex;
+        margin-bottom: 6rem;
+        position: relative;
+      }
+      
+      .step:last-child {
+        margin-bottom: 0;
+      }
+      
+      .step-left {
+        justify-content: flex-end;
+      }
+      
+      .step-right {
+        justify-content: flex-start;
+      }
+      
+      .step-content {
+        width: 45%;
+        background-color: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        position: relative;
+        z-index: 2;
+      }
+      
+      .step-number {
+        width: 50px;
+        height: 50px;
+        background-color: #ff9900;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 600;
+        font-size: 1.3rem;
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 3;
+        box-shadow: 0 4px 8px rgba(255, 153, 0, 0.3);
+      }
+      
+      .step-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 1rem;
+      }
+      
+      .step-description {
+        color: #555;
+        line-height: 1.7;
+        font-size: 1.1rem;
+      }
+      
+      .step-image {
+        width: 100%;
+        height: 180px;
+        background-color: #f0f8ff;
+        border-radius: 8px;
+        margin: 1.5rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #555;
+        font-size: 1rem;
+        overflow: hidden;
+      }
+      
+      .step-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+      .technology-section {
+        background-color: #f0f8ff;
+        padding: 3rem 2rem;
+        border-radius: 10px;
+        margin: 4rem auto;
+        max-width: 1000px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+      
+      .tech-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+      
+      .tech-card {
+        background-color: white;
+        border-radius: 8px;
+        padding: 1.5rem;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+      }
+      
+      .tech-card:hover {
+        transform: translateY(-5px);
+      }
+      
+      .tech-icon {
+        font-size: 2.5rem;
+        color: #ff9900;
+        margin-bottom: 1rem;
+      }
+      
+      .tech-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 0.8rem;
+      }
+      
+      .tech-description {
+        color: #555;
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+      
+      .faq-section {
+        padding: 3rem 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      
+      .faq-container {
+        margin-top: 2rem;
+      }
+      
+      .faq-item {
+        background-color: white;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+      
+      .faq-question {
+        padding: 1.5rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #333;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .faq-question::after {
+        content: "+";
+        font-size: 1.5rem;
+        color: #ff9900;
+      }
+      
+      .faq-answer {
+        padding: 0 1.5rem 1.5rem;
+        color: #555;
+        line-height: 1.6;
+        display: none;
+      }
+      
+      .cta-section {
+        text-align: center;
+        margin: 4rem 0;
+      }
+      
+      .cta-button {
+        display: inline-block;
+        background-color: #ff9900;
+        color: white;
+        font-weight: 600;
+        font-size: 1.2rem;
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+        box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
+      }
+      
+      .cta-button:hover {
+        background-color: #e68a00;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(255, 153, 0, 0.4);
+      }
+      
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2rem;
+        }
+        
+        .hero-subtitle {
+          font-size: 1rem;
+        }
+        
+        .section-title {
+          font-size: 2rem;
+        }
+        
+        .timeline {
+          left: 30px;
+        }
+        
+        .step {
+          flex-direction: column;
+          margin-left: 30px;
+          padding-left: 30px;
+        }
+        
+        .step-content {
+          width: 100%;
+        }
+        
+        .step-number {
+          left: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logodiv">
+        <a href="/main">
+          <div class="logo"></div>
+        </a>
+      </div>
+      <div class="paradiv">
+        <div class="nav-links">
+          <a href="/howitworks" class="howitworks">How it works?</a>
+          <a href="/whytouse" class="whytouse">Why to use?</a>
+          <a href="/aboutus" class="about">About us</a>
+          <a href="/contact" class="contact">Contact</a>
+        </div>
+      </div>
+    </nav>
+    
+    <section class="hero-section">
+      <div class="hero-background"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">How Read Labels Works</h1>
+        <p class="hero-subtitle">Discover the technology behind making product labels easy to understand</p>
+      </div>
+    </section>
+    
+    <section class="process-section">
+      <h2 class="section-title">The Process</h2>
+      
+      <div class="process-container">
+        <div class="timeline"></div>
+        
+        <div class="step step-right">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3 class="step-title">Upload Your Product Image</h3>
+            <div class="step-image">
+              <div style="font-size: 2rem; color: #ddd;">📸</div>
+            </div>
+            <p class="step-description">Simply take a photo of your product or its label and upload it to Read Labels. The clearer the image, the better our system can analyze the ingredients. Make sure the ingredient list is visible in the photo.</p>
+          </div>
+        </div>
+        
+        <div class="step step-left">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3 class="step-title">Provide Product Details</h3>
+            <div class="step-image">
+              <div style="font-size: 2rem; color: #ddd;">📋</div>
+            </div>
+            <p class="step-description">Tell us what type of product it is (beverage, cosmetic, food, etc.) and what you expect from it. This helps our AI understand the context and provide more relevant insights about the ingredients.</p>
+          </div>
+        </div>
+        
+        <div class="step step-right">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3 class="step-title">AI-Powered Analysis</h3>
+            <div class="step-image">
+              <div style="font-size: 2rem; color: #ddd;">🧠</div>
+            </div>
+            <p class="step-description">Behind the scenes, our Node.js backend processes your image using advanced OCR to extract the ingredient list. Then, the Gemini AI analyzes each ingredient, understanding its purpose, potential benefits, and any concerns.</p>
+          </div>
+        </div>
+        
+        <div class="step step-left">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3 class="step-title">Get Personalized Results</h3>
+            <div class="step-image">
+              <div style="font-size: 2rem; color: #ddd;">📊</div>
+            </div>
+            <p class="step-description">Receive a comprehensive breakdown of the product that includes simplified explanations of each ingredient, an overall rating based on your expectations, and insights into what you can realistically expect from the product.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="technology-section">
+      <h2 class="section-title">Our Technology</h2>
+      
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-icon">📸</div>
+          <h3 class="tech-title">Image Recognition</h3>
+          <p class="tech-description">Advanced optical character recognition (OCR) technology accurately extracts text from product labels, even in challenging lighting conditions.</p>
+        </div>
+        
+        <div class="tech-card">
+          <div class="tech-icon">🤖</div>
+          <h3 class="tech-title">Gemini AI</h3>
+          <p class="tech-description">Google's powerful Gemini API analyzes ingredients, understands complex chemical names, and provides context-aware explanations tailored to your needs.</p>
+        </div>
+        
+        <div class="tech-card">
+          <div class="tech-icon">⚙️</div>
+          <h3 class="tech-title">Node.js Backend</h3>
+          <p class="tech-description">Our robust Node.js server architecture ensures fast processing, secure data handling, and reliable results for every analysis.</p>
+        </div>
+      </div>
+    </section>
+    
+    <section class="faq-section">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">How accurate is the ingredient analysis?</div>
+          <div class="faq-answer">Our system combines image recognition with Gemini AI to achieve high accuracy in ingredient analysis. The AI is trained on extensive databases of ingredients and their properties. However, accuracy depends on image quality and clarity of the ingredient list.</div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">Is my data secure?</div>
+          <div class="faq-answer">Yes, we take data privacy seriously. Your images and product information are only used for the analysis and are not stored permanently. Our secure Node.js backend ensures that your data is protected throughout the process.</div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">What types of products can I analyze?</div>
+          <div class="faq-answer">Read Labels works with a wide range of products including foods, beverages, cosmetics, personal care items, household products, and more. Any product with an ingredient list can be analyzed.</div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">How long does the analysis take?</div>
+          <div class="faq-answer">Most analyses are completed within seconds. However, more complex products with lengthy ingredient lists may take slightly longer. Our Node.js backend is optimized for speed while maintaining high accuracy.</div>
+        </div>
+      </div>
+    </section>
+    
+    <div class="cta-section">
+      <a href="/main" class="cta-button">Try It Now</a>
+    </div>
+    
+    <script>
+      const heroOverlay = document.querySelector(".hero-overlay");
+      
+      window.addEventListener("scroll", () => {
+        const scrollPosition = window.scrollY;
+        if (scrollPosition < 400) {
+          heroOverlay.style.opacity = 0.7 + (scrollPosition / 1000);
+        }
+      });
+      
+      // FAQ toggle functionality
+      const faqQuestions = document.querySelectorAll(".faq-question");
+      
+      faqQuestions.forEach(question => {
+        question.addEventListener("click", () => {
+          const answer = question.nextElementSibling;
+          const isOpen = answer.style.display === "block";
+          
+          // Close all answers
+          document.querySelectorAll(".faq-answer").forEach(ans => {
+            ans.style.display = "none";
+          });
+          
+          document.querySelectorAll(".faq-question").forEach(q => {
+            q.style.setProperty("color", "#333");
+            q.style.setProperty("border-bottom", "none");
+          });
+          
+          // If it wasn't open before, open it
+          if (!isOpen) {
+            answer.style.display = "block";
+            question.style.setProperty("color", "#ff9900");
+            question.style.setProperty("border-bottom", "1px solid #eee");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
