@@ -42,7 +42,7 @@ nav {
 }
 
 .logo {
-  background-image: url('images/logo1.png');
+  background-image: url(images/logo1.png);
   height: 50px;
   width: 50px;
   margin-left: 15px;
@@ -50,7 +50,6 @@ nav {
   background-position: center;
   background-repeat: no-repeat;
   display: inline-block;
-  will-change: transform; /* Performance hint for animations */
 }
 
 .nav-links {
@@ -122,9 +121,8 @@ nav {
   height: 100%;
   background-image: linear-gradient(to right, orange, red);
   z-index: -1;
-  transition: opacity 0.5s ease; /* Reduced transition time */
+  transition: opacity 1s ease;
   opacity: 1;
-  will-change: opacity; /* Performance hint for animations */
 }
 
 .designlogo {
@@ -137,14 +135,12 @@ nav {
 
 .Chemical {
   opacity: 0;
-  transition: opacity 0.5s ease; /* Reduced transition time */
-  will-change: opacity; /* Performance hint for animations */
+  transition: all 1s ease;
 }
 
 .Natural {
   opacity: 1;
-  transition: opacity 0.5s ease; /* Reduced transition time */
-  will-change: opacity; /* Performance hint for animations */
+  transition: all 1s ease;
 }
 
 .product {
@@ -156,30 +152,29 @@ nav {
 }
 
 .soda, .soda2 {
-  background-image: url('images/first.webp'), url('images/mockup.webp'); /* Using webp format */
+  background-image: url(images/first.png), url(images/mockup.png);
   background-size: auto 100%, auto 100%;
   background-position: 0 center, center center;
   height: 100%;
   width: 100%;
   overflow: hidden;
   background-blend-mode: multiply;
-  mask-image: url('images/mockup.webp'); /* Using webp format */
+  mask-image: url(images/mockup.png);
   mask-size: auto 100%;
   mask-repeat: no-repeat;
   mask-position: center;
-  transition: all 0.5s ease; /* Reduced transition time */
+  transition: all 1s ease;
   position: relative;
-  will-change: background-position; /* Performance hint for animations */
 }
 
 .product:hover .soda {
-  background-image: url('images/page2.webp'), url('images/mockup.webp'); /* Using webp format */
+  background-image: url(images/page2.png), url(images/mockup.png);
   background-position: 500% center, center center;
-  transition: all 0.5s ease; /* Reduced transition time */
+  transition: all 1s ease;
 }
 
 .soda2 {
-  background-image: url('images/page2.webp'), url('images/mockup.webp'); /* Using webp format */
+  background-image: url(images/page2.png), url(images/mockup.png);
   z-index: 3;
 }
 
@@ -321,16 +316,6 @@ button {
 button:hover {
   box-shadow: 0px 0px 15px rgba(255, 69, 0, 0.6);
   transform: scale(1.02);
-}
-
-/* Optimized loading - initially hide images until loaded */
-.lazy-load {
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.lazy-load.loaded {
-  opacity: 1;
 }
 
 /* Media Queries */

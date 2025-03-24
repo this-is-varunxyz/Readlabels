@@ -3,28 +3,9 @@
   <head>     
     <meta charset="UTF-8" />     
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />     
-    <title>Main</title>  
-    <!-- Preload critical images -->
-    <link rel="preload" href="images/logo1.webp" as="image" type="image/webp">
-    <link rel="preload" href="images/mockup.webp" as="image" type="image/webp">
-    <!-- Preconnect to Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Critical CSS inline -->
-    <style>
-      /* Critical CSS for above-the-fold content */
-      body{margin:0;padding:0;font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;background-color:#f8f9fa;overflow-x:hidden}
-      nav{width:100%;display:flex;background-color:white;box-shadow:0 2px 10px rgba(0,0,0,0.05);padding:10px 0;flex-wrap:wrap}
-      .logo{background-image:url('images/logo1.webp');height:50px;width:50px;background-size:contain;background-position:center;background-repeat:no-repeat}
-    </style>
-    <!-- Non-critical CSS loaded asynchronously -->
-    <link rel="stylesheet" href="index.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="index.css"></noscript>
-    <!-- Defer Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
-    <!-- Meta description for SEO -->
-    <meta name="description" content="Analyze product ingredients - Know what you use with our product analyzer">
+    <title>Main</title>     
+    <link rel="stylesheet" href="index.css" />     
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600&display=swap" rel="stylesheet" />   
   </head>   
   <body>     
     <!-- Navigation Bar -->
@@ -50,8 +31,8 @@
         <div class="designlogo Natural">Natural</div>         
         <div class="designlogo Chemical">Chemical</div>         
         <div class="product">           
-          <div class="soda lazy-load"></div>           
-          <div class="soda2 lazy-load"></div>         
+          <div class="soda"></div>           
+          <div class="soda2"></div>         
         </div>                            
       </div>
        
@@ -67,7 +48,7 @@
           <!-- Form Section -->
           <form action="/result" method="post" enctype="multipart/form-data">            
             <label class="upload-div" for="input-files">               
-              <input type="file" accept="image/*" id="input-files" name="imageFile" style="position: absolute; width: 1px; height: 1px; opacity: 0;">                 
+              <input type="file" accept="image/png,image/jpg" id="input-files" name="imageFile" style="position: absolute; width: 1px; height: 1px; opacity: 0;">                 
               <div class="upload-icon hidden">📸</div>                 
               <p class="drop hidden">Drop your product image here</p>                 
               <p class="browse hidden">or click to browse from your device</p>              
@@ -85,172 +66,41 @@
       </div>                   
     </main>
      
-    <!-- JavaScript - Defer loading -->
-    <script>
-      // Detect if WebP is supported
-      function checkWebP(callback) {
-        var webP = new Image();
-        webP.onload = webP.onerror = function () {
-          callback(webP.height === 2);
-        };
-        webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
-      }
+    <!-- JavaScript -->
+    <script>       
+      const product = document.querySelector(".product");       
+      const design = document.querySelector(".design-overlay");       
+      const natural = document.querySelector(".Natural");       
+      const chemical = document.querySelector(".Chemical");       
+      const inputfile = document.querySelector("#input-files");       
+      const uploadndiv = document.querySelector(".upload-div");       
+      const hiddenelemnts = document.querySelectorAll(".hidden");  
       
-      // Load images based on WebP support
-      checkWebP(function(support) {
-        var imgExtension = support ? 'webp' : 'png';
-        document.documentElement.className += support ? ' webp' : ' no-webp';
-        
-        // Set the correct image paths
-        var sodaElements = document.querySelectorAll('.soda, .soda2');
-        var mockupPath = 'images/mockup.' + imgExtension;
-        var firstPath = 'images/first.' + imgExtension;
-        var secondPath = 'images/page2.' + imgExtension;
-        
-        sodaElements.forEach(function(element) {
-          if (element.classList.contains('soda')) {
-            element.style.backgroundImage = 'url(' + firstPath + '), url(' + mockupPath + ')';
-            element.style.maskImage = 'url(' + mockupPath + ')';
-          } else {
-            element.style.backgroundImage = 'url(' + secondPath + '), url(' + mockupPath + ')';
-            element.style.maskImage = 'url(' + mockupPath + ')';
-          }
-          // Mark as loaded
-          setTimeout(function() {
-            element.classList.add('loaded');
-          }, 100);
-        });
+      // File upload handler
+      inputfile.addEventListener("change", () => {
+        if (inputfile.files && inputfile.files[0]) {   
+          let Imgurl = URL.createObjectURL(inputfile.files[0]);   
+          uploadndiv.style.backgroundImage = `url(${Imgurl})`;   
+          uploadndiv.style.border = 0;   
+          hiddenelemnts.forEach((element) => {     
+            element.style.visibility = "hidden";    
+          });
+        }        
       });
+      
+      // Hover effects for product display        
+      product.addEventListener("mouseenter", function() {         
+        design.style.opacity = 0;         
+        chemical.style.opacity = 1;         
+        natural.style.opacity = 0;                 
+      });        
+      
+      product.addEventListener("mouseleave", function() {         
+        design.style.opacity = 1;       
+        chemical.style.opacity = 0;       
+        natural.style.opacity = 1;         
+      });      
     </script>
     
-    <script defer>       
-      // Optimized version loaded after page content
-      document.addEventListener('DOMContentLoaded', function() {
-        const product = document.querySelector(".product");       
-        const design = document.querySelector(".design-overlay");       
-        const natural = document.querySelector(".Natural");       
-        const chemical = document.querySelector(".Chemical");       
-        const inputfile = document.querySelector("#input-files");       
-        const uploadndiv = document.querySelector(".upload-div");       
-        const hiddenelemnts = document.querySelectorAll(".hidden");  
-        
-        // Image optimization for uploads
-        if ('createImageBitmap' in window && 'ResizeObserver' in window) {
-          inputfile.addEventListener("change", function() {
-            if (!inputfile.files || !inputfile.files[0]) return;
-            
-            const file = inputfile.files[0];
-            // Use compression only for large images
-            if (file.size > 1024 * 1024) { // If larger than 1MB
-              const reader = new FileReader();
-              reader.onload = function(e) {
-                const img = new Image();
-                img.onload = function() {
-                  // Calculate new dimensions while preserving aspect ratio
-                  const MAX_WIDTH = 800;
-                  const MAX_HEIGHT = 800;
-                  let width = img.width;
-                  let height = img.height;
-                  
-                  if (width > height) {
-                    if (width > MAX_WIDTH) {
-                      height *= MAX_WIDTH / width;
-                      width = MAX_WIDTH;
-                    }
-                  } else {
-                    if (height > MAX_HEIGHT) {
-                      width *= MAX_HEIGHT / height;
-                      height = MAX_HEIGHT;
-                    }
-                  }
-                  
-                  // Create canvas to resize image
-                  const canvas = document.createElement('canvas');
-                  canvas.width = width;
-                  canvas.height = height;
-                  const ctx = canvas.getContext('2d');
-                  ctx.drawImage(img, 0, 0, width, height);
-                  
-                  // Convert to optimized format
-                  canvas.toBlob(function(blob) {
-                    const optimizedUrl = URL.createObjectURL(blob);
-                    uploadndiv.style.backgroundImage = `url(${optimizedUrl})`;
-                    uploadndiv.style.border = 0;
-                    hiddenelemnts.forEach((element) => {
-                      element.style.visibility = "hidden";
-                    });
-                  }, 'image/jpeg', 0.8); // 80% quality JPEG
-                };
-                img.src = e.target.result;
-              };
-              reader.readAsDataURL(file);
-            } else {
-              // For smaller images, use as is
-              let Imgurl = URL.createObjectURL(file);
-              uploadndiv.style.backgroundImage = `url(${Imgurl})`;
-              uploadndiv.style.border = 0;
-              hiddenelemnts.forEach((element) => {
-                element.style.visibility = "hidden";
-              });
-            }
-          });
-        } else {
-          // Fallback for browsers that don't support image manipulation
-          inputfile.addEventListener("change", function() {
-            if (inputfile.files && inputfile.files[0]) {
-              let Imgurl = URL.createObjectURL(inputfile.files[0]);
-              uploadndiv.style.backgroundImage = `url(${Imgurl})`;
-              uploadndiv.style.border = 0;
-              hiddenelemnts.forEach((element) => {
-                element.style.visibility = "hidden";
-              });
-            }
-          });
-        }
-        
-        // Use IntersectionObserver for hover effects
-        if ('IntersectionObserver' in window) {
-          const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                // Only attach hover effects when product is visible
-                product.addEventListener("mouseenter", function() {
-                  requestAnimationFrame(() => {
-                    design.style.opacity = 0;
-                    chemical.style.opacity = 1;
-                    natural.style.opacity = 0;
-                  });
-                });
-                
-                product.addEventListener("mouseleave", function() {
-                  requestAnimationFrame(() => {
-                    design.style.opacity = 1;
-                    chemical.style.opacity = 0;
-                    natural.style.opacity = 1;
-                  });
-                });
-                
-                observer.unobserve(entry.target);
-              }
-            });
-          }, { threshold: 0.1 });
-          
-          observer.observe(product);
-        } else {
-          // Fallback for browsers without IntersectionObserver
-          product.addEventListener("mouseenter", function() {
-            design.style.opacity = 0;
-            chemical.style.opacity = 1;
-            natural.style.opacity = 0;
-          });
-          
-          product.addEventListener("mouseleave", function() {
-            design.style.opacity = 1;
-            chemical.style.opacity = 0;
-            natural.style.opacity = 1;
-          });
-        }
-      });
-    </script>
   </body> 
 </html>
