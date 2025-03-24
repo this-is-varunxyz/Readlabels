@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600&display=swap" rel="stylesheet" />   
   </head>   
   <body>     
+    <!-- Navigation Bar -->
     <nav>       
       <div class="logodiv">         
         <div class="logo"></div>       
@@ -20,8 +21,10 @@
           <a href="/contact" class="contact">Contact</a>         
         </div>       
       </div>     
-    </nav>     
+    </nav>
+     
     <main>       
+      <!-- Hero Section -->
       <div class="design">         
         <div class="design-background"></div>         
         <div class="design-overlay"></div>          
@@ -31,7 +34,9 @@
           <div class="soda"></div>           
           <div class="soda2"></div>         
         </div>                            
-      </div>       
+      </div>
+       
+      <!-- Main Content -->
       <div class="main-container">         
         <div class="main-box">             
           <p class="know">Know what you use!</p>             
@@ -39,22 +44,29 @@
           <p class="howtouse">                 
             Upload your products image and provide details below.             
           </p>
-          <form action="/result" method="post" enctype="multipart/form-data"  >            
-          <label class="upload-div" for="input-files" style="position: relative;">               
-            <input type="file" accept="image/png,image/jpg" id="input-files" name="imageFile"  style="visibility: hidden;">                 
-            <div class="upload-icon hidden">📸</div>                 
-            <p class="drop hidden">Drop your product image here</p>                 
-            <p class="browse hidden">or click to browse from your device</p>              
-          </label>             
-          <p class="typeofproduct">📋 Type of product</p>             
-          <input type="text" id="product-type" name="productType" placeholder="e.g. Beverage, Snack, Cosmetic, etc.">             
-          <p class="typeofproduct expect"><span style="color: #ff9900;">🗸</span> What you expect from this product? </p>             
-          <textarea id="product-expectations" name="productExpect" style="width: 90%; height: 5vw; padding: 0.7vw; font-size: 1vw; border: 0.1vw solid #ddd; border-radius: 0.5vw; background-color: white; outline: none; margin-left: 1.2vw; margin-top: 1vw; transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out; box-shadow: 0 0.2vw 0.4vw rgba(0, 0, 0, 0.08), inset 0 0.1vw 0.2vw rgba(0, 0, 0, 0.03); resize: none;" placeholder="Tell us what you're looking for or concerned about..."></textarea>                          
-          <button type="submit" >Next</button>   
-        </form>                  
+          
+          <!-- Form Section -->
+          <form action="/result" method="post" enctype="multipart/form-data">            
+            <label class="upload-div" for="input-files">               
+              <input type="file" accept="image/png,image/jpg" id="input-files" name="imageFile" style="position: absolute; width: 1px; height: 1px; opacity: 0;">                 
+              <div class="upload-icon hidden">📸</div>                 
+              <p class="drop hidden">Drop your product image here</p>                 
+              <p class="browse hidden">or click to browse from your device</p>              
+            </label>
+                         
+            <p class="typeofproduct">📋 Type of product</p>             
+            <input type="text" id="product-type" name="productType" placeholder="e.g. Beverage, Snack, Cosmetic, etc.">             
+            
+            <p class="typeofproduct expect"><span style="color: #ff9900;">🗸</span> What you expect from this product? </p>             
+            <textarea id="product-expectations" name="productExpect" placeholder="Tell us what you're looking for or concerned about..."></textarea>
+                                      
+            <button type="submit">Next</button>   
+          </form>                  
         </div>       
       </div>                   
-    </main>     
+    </main>
+     
+    <!-- JavaScript -->
     <script>       
       const product = document.querySelector(".product");       
       const design = document.querySelector(".design-overlay");       
@@ -64,15 +76,19 @@
       const uploadndiv = document.querySelector(".upload-div");       
       const hiddenelemnts = document.querySelectorAll(".hidden");  
       
-      inputfile.addEventListener("change", () => {   
-        let Imgurl = URL.createObjectURL(inputfile.files[0]);   
-        uploadndiv.style.backgroundImage = `url(${Imgurl})`;   
-        uploadndiv.style.border = 0;   
-        hiddenelemnts.forEach((element, index) => {     
-          element.style.visibility = "hidden";    
-        });        
-      });        
+      // File upload handler
+      inputfile.addEventListener("change", () => {
+        if (inputfile.files && inputfile.files[0]) {   
+          let Imgurl = URL.createObjectURL(inputfile.files[0]);   
+          uploadndiv.style.backgroundImage = `url(${Imgurl})`;   
+          uploadndiv.style.border = 0;   
+          hiddenelemnts.forEach((element) => {     
+            element.style.visibility = "hidden";    
+          });
+        }        
+      });
       
+      // Hover effects for product display        
       product.addEventListener("mouseenter", function() {         
         design.style.opacity = 0;         
         chemical.style.opacity = 1;         
@@ -84,6 +100,7 @@
         chemical.style.opacity = 0;       
         natural.style.opacity = 1;         
       });      
-    </script>   
+    </script>
+    
   </body> 
 </html>

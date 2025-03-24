@@ -10,21 +10,26 @@ body {
   overflow-x: hidden;
 }
 
+/* Navigation Bar */
 nav {
   width: 100%;
-  height: 5vw;
-  min-height: 80px;
+  height: auto;
+  min-height: 70px;
   display: flex;
   background-color: white;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 10px 0;
+  flex-wrap: wrap;
 }
 
 .logodiv {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   height: 100%;
   width: 30%;
+  min-width: 150px;
+  padding: 10px;
 }
 
 .paradiv {
@@ -33,15 +38,14 @@ nav {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding-right: 40px;
+  padding-right: 20px;
 }
 
 .logo {
   background-image: url(images/logo1.png);
-  height: 80%;
-  margin-left: 2vw;
-  width: 5vw;
-  aspect-ratio: 1;
+  height: 50px;
+  width: 50px;
+  margin-left: 15px;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -51,19 +55,20 @@ nav {
 .nav-links {
   display: flex;
   justify-content: flex-end;
-  flex-wrap: nowrap;
-  gap: clamp(10px, 3vw, 40px);
+  flex-wrap: wrap;
+  gap: 20px;
   width: 100%;
 }
 
 .nav-links a {
   text-decoration: none;
   color: #333;
-  font-size: clamp(14px, 1.5vw, 18px);
+  font-size: 16px;
   font-weight: 500;
   position: relative;
   transition: color 0.3s;
   white-space: nowrap;
+  padding: 5px;
 }
 
 .nav-links a:hover {
@@ -75,7 +80,7 @@ nav {
   position: absolute;
   width: 0;
   height: 2px;
-  bottom: -5px;
+  bottom: -2px;
   left: 0;
   background-color: #ffb800;
   transition: width 0.3s;
@@ -85,142 +90,17 @@ nav {
   width: 100%;
 }
 
+/* Hero Section */
 .design {
-  height: 40vw;
+  height: auto;
+  min-height: 300px;
   width: 100%;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.Chemical {
-  opacity: 0;
-  transition: all 1s ease;
-}
-
-.Natural {
-  opacity: 1;
-  transition: all 1s ease;
-}
-.main-container {
-  width: 100%;
-  display: flex;
-  height: 60vw;
-  align-items: center;
-  justify-content: center;
-}
-.main-box {
-  width: 30vw;
-  margin-top: 5vw;
-
-  height: 45vw;
-  background-color: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
-  border-radius: 1vw;
-}
-button {
-    height: 3vw;
-    font-size: 1.5vw;
-    text-align: center;
-    width: 8vw;
-    margin-left: 11vw;
-    color: white;
-    background-image: linear-gradient(to right, orange, red);
-    border: none;
-    outline: none;
-    border-radius: 0.5vw;
-    margin-top: 1vw;
-    box-shadow: 0px 0px 0.5vw rgba(255, 69, 0, 0.4);
-    transition: box-shadow 0.3s ease, transform 0.2s ease;
-}
-
-/* Subtle glowing effect on hover */
-button:hover {
-    box-shadow: 0px 0px 1vw rgba(255, 69, 0, 0.6);
-    transform: scale(1.02);
-}
-
-.know {
-  margin-top: 1vw;
-  font-size: 2vw;
-  text-align: center;
-}
-.upload-div {
-  height: 30%;
-  margin: auto;
-  border-radius: 1vw;
-  margin-top: 2vw;
-  width: 90%;
-  background-color: rgba(255, 178, 2, 0.2);
-   /* Orange with 20% opacity */
-
-  border: 0.2vw dashed #ffb202;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: space-evenly;
-  flex-direction: column;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.upload-icon {
-  font-size: 3vw;
-}
-.howtouse {
-  color: grey;
-  text-align: center;
-  margin-top: 1vw;
-  font-size: 1.1vw;
-}
-.designdiv {
-  height: 0.2vw;
-  width: 10vw;
-  background-image: linear-gradient(to left, orange, red);
-  text-align: center;
-  margin: auto;
-}
-.typeofproduct {
-  color: #555;
-  font-weight: 500;
-  font-size: 1.2vw;
-  margin-top: 2vw;
-  margin-left: 1vw;
-}
-
-/* Input field styling */
-
-.first {
-  width: 90%;
-  height: 1vw;
-  margin: auto;
-}
-#product-type {
-    width: 90%;
-    padding: 0.7vw;
-    font-size: 1vw;
-    border: 0.1vw solid #ddd; /* Light gray border */
-    border-radius: 0.5vw;
-    background-color: white;
-    outline: none;
-    margin-left: 1.2vw;
-   
-    margin-top: 1vw;
-    transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-
-    /* Softer outer shadow */
-    box-shadow: 0 0.2vw 0.4vw rgba(0, 0, 0, 0.08), 
-                inset 0 0.1vw 0.2vw rgba(0, 0, 0, 0.03); /* Softer inner shadow */
-}
-
-
-/* Border and shadow effect when focused */
-#product-type:focus {
-    border: 0.1vw solid #ff9900; /* Orange highlight */
-    box-shadow: 0 0.3vw 0.6vw rgba(255, 153, 0, 0.2), 
-                inset 0 0.1vw 0.2vw rgba(0, 0, 0, 0.03); /* Slightly stronger outer shadow */
+  padding: 40px 0;
+  overflow: hidden;
 }
 
 .design-background {
@@ -231,17 +111,6 @@ button:hover {
   height: 100%;
   background-color: red;
   z-index: -1;
-}
-.drop {
-  color: #555;
-  font-weight: 500;
-  font-size: 1vw;
-  margin-top: 1vw;
-}
-.browse {
-  margin-top: 0.5vw;
-  color: gray;
-  font-size: 1vw;
 }
 
 .design-overlay {
@@ -256,8 +125,6 @@ button:hover {
   opacity: 1;
 }
 
-
-
 .designlogo {
   font-size: 15vw;
   position: absolute;
@@ -266,14 +133,25 @@ button:hover {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.product {
-  height: 30vw;
-  width: 16vw;
-  overflow: hidden;
-  position: absolute;
+.Chemical {
+  opacity: 0;
+  transition: all 1s ease;
 }
 
-.soda {
+.Natural {
+  opacity: 1;
+  transition: all 1s ease;
+}
+
+.product {
+  height: 300px;
+  width: 160px;
+  overflow: hidden;
+  position: relative;
+  margin: 20px auto;
+}
+
+.soda, .soda2 {
   background-image: url(images/first.png), url(images/mockup.png);
   background-size: auto 100%, auto 100%;
   background-position: 0 center, center center;
@@ -298,26 +176,159 @@ button:hover {
 .soda2 {
   background-image: url(images/page2.png), url(images/mockup.png);
   z-index: 3;
-  background-size: auto 100%, auto 100%;
-  background-position: 0 center, center center;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  background-blend-mode: multiply;
-  mask-image: url(images/mockup.png);
-  mask-size: auto 100%;
-  mask-repeat: no-repeat;
-  mask-position: center;
-  transition: all 1s ease;
-  position: relative;
 }
 
+/* Main Content Container */
+.main-container {
+  width: 100%;
+  display: flex;
+  height: auto;
+  min-height: 600px;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.main-box {
+  width: 90%;
+  max-width: 500px;
+  height: auto;
+  min-height: 600px;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+.know {
+  margin-top: 15px;
+  font-size: clamp(18px, 5vw, 32px);
+  text-align: center;
+}
+
+.designdiv {
+  height: 4px;
+  width: 100px;
+  background-image: linear-gradient(to left, orange, red);
+  margin: 15px auto;
+}
+
+.howtouse {
+  color: grey;
+  text-align: center;
+  margin-top: 15px;
+  font-size: clamp(14px, 3vw, 18px);
+}
+
+/* Upload Section */
+.upload-div {
+  height: auto;
+  min-height: 150px;
+  margin: 20px auto;
+  border-radius: 15px;
+  width: 90%;
+  background-color: rgba(255, 178, 2, 0.2);
+  border: 3px dashed #ffb202;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: space-evenly;
+  flex-direction: column;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 20px 10px;
+}
+
+.upload-icon {
+  font-size: clamp(24px, 5vw, 48px);
+  margin-bottom: 10px;
+}
+
+.drop {
+  color: #555;
+  font-weight: 500;
+  font-size: clamp(14px, 3vw, 16px);
+  margin-top: 10px;
+  text-align: center;
+}
+
+.browse {
+  margin-top: 8px;
+  color: gray;
+  font-size: clamp(12px, 2.5vw, 16px);
+  text-align: center;
+}
+
+/* Form Elements */
+.typeofproduct {
+  color: #555;
+  font-weight: 500;
+  font-size: clamp(14px, 3vw, 19px);
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+#product-type, #product-expectations {
+  width: 90%;
+  padding: 12px;
+  font-size: clamp(14px, 2.5vw, 16px);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: white;
+  outline: none;
+  margin-left: 10px;
+  margin-top: 10px;
+  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08), inset 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+#product-expectations {
+  height: 120px;
+  resize: none;
+}
+
+#product-type:focus, #product-expectations:focus {
+  border: 1px solid #ff9900;
+  box-shadow: 0 3px 6px rgba(255, 153, 0, 0.2), inset 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+button {
+  height: auto;
+  min-height: 40px;
+  font-size: clamp(16px, 3vw, 24px);
+  text-align: center;
+  width: auto;
+  min-width: 120px;
+  padding: 10px 20px;
+  margin: 20px auto;
+  display: block;
+  color: white;
+  background-image: linear-gradient(to right, orange, red);
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  box-shadow: 0px 0px 8px rgba(255, 69, 0, 0.4);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  box-shadow: 0px 0px 15px rgba(255, 69, 0, 0.6);
+  transform: scale(1.02);
+}
+
+/* Media Queries */
 @media (min-width: 1200px) {
   .nav-links {
     gap: 40px;
   }
   .nav-links a {
     font-size: 18px;
+  }
+  .product {
+    height: 400px;
+    width: 220px;
   }
 }
 
@@ -328,19 +339,24 @@ button:hover {
   .paradiv {
     padding-right: 20px;
   }
+  .product {
+    height: 350px;
+    width: 180px;
+  }
 }
 
 @media (max-width: 768px) {
   nav {
     flex-direction: column;
-    height: auto;
     padding: 15px 0;
   }
-  .logodiv,
-  .paradiv {
+  .logodiv, .paradiv {
     width: 100%;
     justify-content: center;
     padding-right: 0;
+  }
+  .logo {
+    margin-left: 0;
   }
   .paradiv {
     margin-top: 15px;
@@ -348,22 +364,42 @@ button:hover {
   .nav-links {
     justify-content: center;
     gap: 15px;
+    padding: 0 15px;
   }
-  .nav-links a {
-    font-size: 16px;
+  .design {
+    padding-top: 60px;
+    padding-bottom: 60px;
   }
-  .logo {
-    margin-left: 0;
+  .designlogo {
+    font-size: 18vw;
+  }
+  .product {
+    height: 280px;
+    width: 150px;
   }
 }
 
 @media (max-width: 480px) {
   .nav-links {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
   }
-  nav {
-    padding: 10px 0 20px 0;
+  .nav-links a {
+    font-size: 15px;
+    padding: 8px 12px;
+  }
+  .design {
+    min-height: 250px;
+  }
+  .product {
+    height: 220px;
+    width: 120px;
+  }
+  .main-box {
+    padding: 15px 10px;
+  }
+  .upload-div {
+    min-height: 130px;
   }
 }
