@@ -142,6 +142,16 @@ nav {
   opacity: 1;
   transition: all 1s ease;
 }
+#preloader{
+
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  background: black url(images/Loader.gif) no-repeat center center;
+  background-size: 15%; 
+
+}
 
 .product {
   height: 300px;

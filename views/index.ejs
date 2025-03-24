@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="index.css" />     
     <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600&display=swap" rel="stylesheet" />   
   </head>   
-  <body>     
+  <body> 
+    <div id="preloader" ></div>    
     <!-- Navigation Bar -->
     <nav>       
       <div class="logodiv">         
@@ -67,7 +68,8 @@
     </main>
      
     <!-- JavaScript -->
-    <script>       
+    <script>  
+    const preloader = document.getElementById("preloader") ;    
       const product = document.querySelector(".product");       
       const design = document.querySelector(".design-overlay");       
       const natural = document.querySelector(".Natural");       
@@ -76,7 +78,11 @@
       const uploadndiv = document.querySelector(".upload-div");       
       const hiddenelemnts = document.querySelectorAll(".hidden");  
       
-      // File upload handler
+      window.addEventListener("load",()=>{
+        preloader.style.display = "none";
+      })
+      // File upload
+      //  handler
       inputfile.addEventListener("change", () => {
         if (inputfile.files && inputfile.files[0]) {   
           let Imgurl = URL.createObjectURL(inputfile.files[0]);   
