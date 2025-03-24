@@ -42,7 +42,7 @@ nav {
 }
 
 .logo {
-  background-image: url(images/logo1.png);
+  background-image: url(images/logo1.webp);
   height: 50px;
   width: 50px;
   margin-left: 15px;
@@ -152,14 +152,14 @@ nav {
 }
 
 .soda, .soda2 {
-  background-image: url(images/first.png), url(images/mockup.png);
+  background-image: url(images/first.webp), url(images/mockup.webp);
   background-size: auto 100%, auto 100%;
   background-position: 0 center, center center;
   height: 100%;
   width: 100%;
   overflow: hidden;
   background-blend-mode: multiply;
-  mask-image: url(images/mockup.png);
+  mask-image: url(images/mockup.webp);
   mask-size: auto 100%;
   mask-repeat: no-repeat;
   mask-position: center;
@@ -168,13 +168,13 @@ nav {
 }
 
 .product:hover .soda {
-  background-image: url(images/page2.png), url(images/mockup.png);
+  background-image: url(images/page2.webp), url(images/mockup.webp);
   background-position: 500% center, center center;
   transition: all 1s ease;
 }
 
 .soda2 {
-  background-image: url(images/page2.png), url(images/mockup.png);
+  background-image: url(images/page2.webp), url(images/mockup.webp);
   z-index: 3;
 }
 
