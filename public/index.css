@@ -322,6 +322,47 @@ button:hover {
   transform: scale(1.02);
 }
 
+/* Analysis Type Modal Styles */
+.analysis-type-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.analysis-type-modal {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+}
+
+.analysis-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.analysis-buttons button {
+  width: 150px;
+}
+
+.disclaimer {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+}
+
 /* Media Queries */
 @media (min-width: 1200px) {
   .nav-links {

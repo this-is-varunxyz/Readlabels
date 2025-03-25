@@ -3,7 +3,7 @@ const express = require("express");
 const path = require("path");
 const multer = require("multer");
 const fs = require("fs");
-const { get } = require("http");
+const sharp = require("sharp"); // Added sharp for image processing
 const app = express();
 
 app.set("view engine", "ejs");
@@ -24,7 +24,6 @@ const storage = multer.diskStorage({
   },
 });
 
-
 const upload = multer({ storage });
 
 require("dotenv").config();
@@ -41,16 +40,18 @@ function fileToGenerativePart(buffer, mimeType) {
   };
 }
 
+// Routes
 app.get("/", function (req, res) {
   res.render("index");
 });
-app.get("/aboutus",(req,res)=>{
-  res.render("aboutus");
-})
-app.get("/main",(req,res)=>{
-  res.render("index");
-})
 
+app.get("/aboutus", (req, res) => {
+  res.render("aboutus");
+});
+
+app.get("/main", (req, res) => {
+  res.render("index");
+});
 
 app.post("/result", upload.single("imageFile"), async (req, res) => {
   try {
@@ -59,13 +60,32 @@ app.post("/result", upload.single("imageFile"), async (req, res) => {
     }
 
     const fileExt = path.extname(req.file.originalname);
-    const filePath = `public/uploads/productimage${fileExt}`;
+    const originalFilePath = req.file.path;
     const mimeType = req.file.mimetype;
+    const analysisType = req.body.analysisType || 'deep';
 
-    // Read the uploaded image file
-    const imageBuffer = fs.readFileSync(filePath);
+    let filePath = originalFilePath;
+    let imageBuffer;
 
-    // Create model instance - using a model that supports image analysis
+    // Process image based on analysis type
+    if (analysisType === 'fast') {
+      // Compress image
+      const compressedFilePath = `public/uploads/compressed_productimage${fileExt}`;
+      await sharp(originalFilePath)
+        .resize(800, 800, { 
+          fit: sharp.fit.inside, 
+          withoutEnlargement: true 
+        })
+        .jpeg({ quality: 70 }) // Compress with 70% quality
+        .toFile(compressedFilePath);
+      
+      filePath = compressedFilePath;
+    }
+
+    // Read the image file
+    imageBuffer = fs.readFileSync(filePath);
+
+    // Create model instance
     const visionModel = genAI.getGenerativeModel({ 
       model: "gemini-1.5-pro",
       generationConfig: {
@@ -76,7 +96,7 @@ app.post("/result", upload.single("imageFile"), async (req, res) => {
       }
     });
 
-    // Prepare the prompt with text and image - focusing on JSON format
+    // Prepare the prompt with text and image
     const promptParts = [
       { text: `You are analyzing a product image. Your response must be ONLY a valid JSON object with NO text outside the JSON structure.
       
@@ -88,11 +108,11 @@ Return EXACTLY this JSON format with no comments, explanations, backticks, or ma
 {"whatcanyouexpect":" in most simple englsih with few words see what user are expecting from this product and tell if they can expect that or not and also what they can expect",
 "rating":"give rating 1 to 10 eg 7/10 like this",
 "isproductworthbuying":"yes/no with reason from ingrediants and what user expect and in most simple english with few words ",
-"ingredients":{"ingrediantname": ing the biggining analysis deep ly if the ingredient is plant based or natural say (natural) if it is of pure chemical say (chemical)  than explain in super easy short words what this ingredient is than tell what this ingredient does in the product in simple language  than brief note on any health considerations all this things should inside this object not be in json format just line by line }}` },
+"ingredients":{"ingrediantname": ing the biggining analysis deeply if the ingredient is plant based or natural say (natural) if it is of pure chemical say (chemical)  than explain in super easy short words what this ingredient is than tell what this ingredient does in the product in simple language  than brief note on any health considerations all this things should inside this object not be in json format just line by line }}` },
       fileToGenerativePart(imageBuffer, mimeType),
     ];
 
-    
+
     // Generate content
     const result = await visionModel.generateContent({
       contents: [{ parts: promptParts }],
@@ -102,22 +122,20 @@ Return EXACTLY this JSON format with no comments, explanations, backticks, or ma
     
     // Process response to ensure it's clean JSON
     response = cleanJsonResponse(response);
-    response=JSON.parse(response);
+    response = JSON.parse(response);
 
-    console.log(response)
+    console.log(response);
     // Render the result template with image path and AI response
     res.render("result", {
-      image: `uploads/productimage${fileExt}`,
+      image: `uploads/${path.basename(filePath)}`,
       answer: response,
+      analysisType: analysisType
     });
   } catch (error) {
     console.error("Error:", error);
     res.status(500).send("An error occurred: " + error.message);
   }
 });
-app.get("/howitworks",(req,res)=>{
-  res.render("howitworks")
-})
 
 // Helper function to clean json response
 function cleanJsonResponse(response) {
@@ -142,45 +160,20 @@ function cleanJsonResponse(response) {
   }
 }
 
-// For text-only requests
-const textModel = genAI.getGenerativeModel({
-  model: "gemini-1.5-flash", // Using flash for text-only for speed
-  generationConfig: {
-    temperature: 0.2,
-    topP: 0.8,
-    topK: 40,
-    maxOutputTokens: 2048,
-  }
+// Additional routes
+app.get("/howitworks", (req, res) => {
+  res.render("howitworks");
 });
-app.get("/whytouse",(req,res)=>{
+
+app.get("/whytouse", (req, res) => {
   res.render("whytouse");
+});
 
-})
-app.get("/contact",(req,res)=>{
+app.get("/contact", (req, res) => {
   res.render("contact");
+});
 
-})
-
-async function run(message) {
-  // For JSON requests, add specific instruction
-  if (message.toLowerCase().includes('json')) {
-    message = `Return ONLY a valid JSON object with NO text outside the JSON structure. ${message}`;
-  }
-
-  const result = await textModel.generateContent({
-    contents: [{ parts: [{ text: message }] }],
-  });
-  
-  const response = result.response.text();
-  
-  // For text-only responses that should be JSON, clean them too
-  if (message.toLowerCase().includes('json')) {
-    return cleanJsonResponse(response);
-  }
-  
-  return response;
-}
-
+// Server startup
 app.listen(3000, () => {
   console.log("Server running on port 3000");
 });
