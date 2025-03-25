@@ -298,7 +298,7 @@ let ingredients = document.querySelectorAll(".ingredient-description");
 ingredients.forEach((ingredient, index) => {
   let dot = document.querySelectorAll(".ingredient-dot")[index];
   let line = document.querySelectorAll(".ingredient-item")[index] // Get corresponding dot
-  if (ingredient.textContent.toLowerCase().includes("chemical")) {
+  if (ingredient.textContent.toLowerCase().includes("harmful")) {
     dot.style.backgroundColor = "red";
     line.style.borderColor = "red";
      // Change color if "safe" is found
@@ -306,6 +306,11 @@ ingredients.forEach((ingredient, index) => {
   if (ingredient.textContent.toLowerCase().includes("natural")) {
     dot.style.backgroundColor = "green";
     line.style.borderColor = "green";
+     // Change color if "safe" is found
+  }
+  if (ingredient.textContent.toLowerCase().includes("chemical")) {
+    dot.style.backgroundColor = "orange";
+    line.style.borderColor = "orange";
      // Change color if "safe" is found
   }
 });

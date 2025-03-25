@@ -85,13 +85,14 @@ User expectations: ${req.body.productExpect}
 
 Examine text, labels, and ingredients visible in the image.
 Return EXACTLY this JSON format with no comments, explanations, backticks, or markdown:
-{"whatcanyouexpect":"see what user are expecting from this product and tell if they can expect that or not and also what they can expect",
+{"whatcanyouexpect":" in most simple englsih with few words see what user are expecting from this product and tell if they can expect that or not and also what they can expect",
 "rating":"give rating 1 to 10 eg 7/10 like this",
-"isproductworthbuying":"yes/no with reason with only 6-7 words ",
-"ingredients":{"ingrediantname": ing the biggining if the ingrediant is chemical or not if chemical tell (chemical) if not than say (natural) descirbe the ingrediant in most easy english and also tell what that ingrediant do }}` },
+"isproductworthbuying":"yes/no with reason from ingrediants and what user expect and in most simple english with few words ",
+"ingredients":{"ingrediantname": ing the biggining analysis deep ly if the ingredient is plant based or natural say (natural) if it is of pure chemical say (chemical)  than explain in super easy short words what this ingredient is than tell what this ingredient does in the product in simple language  than brief note on any health considerations all this things should inside this object not be in json format just line by line }}` },
       fileToGenerativePart(imageBuffer, mimeType),
     ];
 
+    
     // Generate content
     const result = await visionModel.generateContent({
       contents: [{ parts: promptParts }],
@@ -103,6 +104,7 @@ Return EXACTLY this JSON format with no comments, explanations, backticks, or ma
     response = cleanJsonResponse(response);
     response=JSON.parse(response);
 
+    console.log(response)
     // Render the result template with image path and AI response
     res.render("result", {
       image: `uploads/productimage${fileExt}`,
