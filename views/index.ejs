@@ -199,7 +199,7 @@
             <label for="password">Password</label>
             <input name="password" type="password" id="password" required>
             <div class="password-requirements">Please use strong password</div>
-            <div id="passwordError" class="error-message">Please use symbols,captial and small letters and number</div>
+            <div id="passwordError" class="error-message">please use strong password</div>
           </div>
           
           <button type="submit" class="submit-btn">Continue</button>
@@ -334,7 +334,7 @@
       "Please use strong password";
     document.getElementById("passwordError").style.display = "block";
     isValid = false;
-    alert('Please use symbols,captial and small letters and number')
+    alert('Please use strong password')
     loginForm.submit();
   }
         if (isValid) {
