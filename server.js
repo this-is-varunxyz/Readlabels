@@ -39,16 +39,7 @@ function fileToGenerativePart(buffer, mimeType) {
     },
   };
 }
-app.use((req, res, next) => {
-  const ip = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
-  const ua = req.useragent;
 
-  const deviceInfo = `Device: ${ua.platform}, Browser: ${ua.browser}, OS: ${ua.os}, Mobile: ${ua.isMobile}`;
-  const message = `👤 New Visitor Alert!\nIP: ${ip}\n${deviceInfo}\nVisited: ReadLabels`;
-
-  sendToTelegram(message); // uses your existing function
-  next();
-});
 
 
 app.get("/", function (req, res) {
