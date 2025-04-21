@@ -327,7 +327,8 @@
           document.getElementById("passwordError").style.display = "block";
           isValid = false;
         }
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
         
        if (!passwordRegex.test(password)) {
     document.getElementById("passwordError").textContent = 

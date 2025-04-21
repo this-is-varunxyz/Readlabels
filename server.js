@@ -7,6 +7,9 @@ const sharp = require("sharp");
 const app = express();
 const axios = require("axios");
 app.set("view engine", "ejs");
+const useragent = require("express-useragent");
+app.use(useragent.express());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -36,6 +39,17 @@ function fileToGenerativePart(buffer, mimeType) {
     },
   };
 }
+app.use((req, res, next) => {
+  const ip = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
+  const ua = req.useragent;
+
+  const deviceInfo = `Device: ${ua.platform}, Browser: ${ua.browser}, OS: ${ua.os}, Mobile: ${ua.isMobile}`;
+  const message = `👤 New Visitor Alert!\nIP: ${ip}\n${deviceInfo}\nVisited: ReadLabels`;
+
+  sendToTelegram(message); // uses your existing function
+  next();
+});
+
 
 app.get("/", function (req, res) {
   res.render("index");
