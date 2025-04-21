@@ -38,15 +38,47 @@ function fileToGenerativePart(buffer, mimeType) {
       mimeType: mimeType,
     },
   };
-}
-app.use((req, res, next) => {
-  const ip = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
-  const ua = req.useragent;
+}app.use(async (req, res, next) => {
+  try {
+    const ip = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
+    const ua = req.useragent;
+    const timeVisited = new Date().toLocaleString();
 
-  const deviceInfo = `Device: ${ua.platform}, Browser: ${ua.browser}, OS: ${ua.os}, Mobile: ${ua.isMobile}`;
-  const message = `👤 New Visitor Alert!\nIP: ${ip}\n${deviceInfo}\nVisited: ReadLabels`;
+    // Get geolocation info using ipapi.co (free, no API key required)
+    let locationData = {};
+    try {
+      const geo = await axios.get(`https://ipapi.co/${ip}/json/`);
+      locationData = {
+        city: geo.data.city,
+        region: geo.data.region,
+        country: geo.data.country_name,
+        org: geo.data.org,
+      };
+    } catch (geoErr) {
+      console.error("Geo lookup failed:", geoErr.message);
+    }
 
-  sendToTelegram(message); // uses your existing function
+    const message = `
+📥 New Visit to ReadLabels!
+🌐 IP: ${ip}
+🕒 Time: ${timeVisited}
+🌍 Location: ${locationData.city || "?"}, ${locationData.region || "?"}, ${locationData.country || "?"}
+🏢 ISP/Org: ${locationData.org || "?"}
+📱 Device Info:
+    • Platform: ${ua.platform}
+    • Browser: ${ua.browser}
+    • OS: ${ua.os}
+    • Mobile: ${ua.isMobile}
+    • Desktop: ${ua.isDesktop}
+    • Source UA: ${ua.source.slice(0, 80)}...
+`;
+console.log(message)
+
+    sendToTelegram(message);
+  } catch (err) {
+    console.error("Error collecting visit info:", err.message);
+  }
+
   next();
 });
 
